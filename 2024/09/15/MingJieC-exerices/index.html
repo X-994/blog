@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/null">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="X-994">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这些都是我写的，都是可以跑出正确答案的，应该是还能优化的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="明解C语言课后练习">
+<meta property="og:url" content="http://example.com/2024/09/15/MingJieC-exerices/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="这些都是我写的，都是可以跑出正确答案的，应该是还能优化的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-15T11:25:35.000Z">
+<meta property="article:modified_time" content="2024-09-15T13:18:07.439Z">
+<meta property="article:author" content="X-994">
+<meta property="article:tag" content="c">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>明解C语言课后练习 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/mk.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/selection.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="明解C语言课后练习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-15 19:25" pubdate>
+          2024年9月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">明解C语言课后练习</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2> 第一章</h2>
+<p>1.1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>printf(&quot;15减去37的结果是%d&quot;,15-37);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>printf(&quot;15减去37的结果是%d&quot;,15-37);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>printf(&quot;喂\n&quot;);<br>printf(&quot;      \n&quot;);<br>printf(&quot;您好\n&quot;);<br>printf(&quot;再见。\n&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main() &#123;<br>    int a = 3.14;<br>    printf(&quot;输出a的值：%d&quot;, a);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>int是整数型的 小数点后面的会被忽略 只保留整数部分</p>
+<p>1.5</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main ()&#123;<br>    int a;<br>    printf(&quot;请输入一个整数：&quot;,a);<br>    scanf(&quot;%d&quot;,&amp;a);<br>    printf(&quot;该整数加去12的结果是:%d&quot;,a+6);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.6</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main ()&#123;<br>    int a;<br>    printf(&quot;请输入一个整数：&quot;,a);<br>    scanf(&quot;%d&quot;,&amp;a);<br>    printf(&quot;该整数减去6的结果是:%d&quot;,a-6);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.7</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>    puts(&quot;天&quot;);<br>    puts(&quot;地&quot;);<br>    puts(&quot;人&quot;);<br>    return  0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.8</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br>int c;<br>puts(&quot;请输入两个整数：&quot;);<br>printf(&quot;整数1:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数2:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>c=a*b;<br>printf(&quot;他们的乘积是：%d&quot;,c);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>1.9</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b,c;<br>int d;<br>puts(&quot;请输入两个整数：&quot;);<br>printf(&quot;整数1:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数2:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;整数3:&quot;);    scanf(&quot;%d&quot;,&amp;c);<br>d=a+b+c;<br>printf(&quot;他们的和是：%d&quot;,d);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2>第二章</h2>
+<p>2.1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br><br>puts(&quot;请输入两个整数：&quot;);<br>printf(&quot;整数1:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数2:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;a的值是b的值的%d%%&quot;,(a*100)/b);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>2.2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br>puts(&quot;请输入两个整数：&quot;);<br>printf(&quot;整数1:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数2:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;他们的和是%d,积是%d&quot;,a+b,a*b);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>2.3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>    double a;<br>   <br>printf(&quot;请输入一个实数：&quot;);    scanf(&quot;%lf&quot;,&amp;a);<br>    printf(&quot;你输入的是%lf&quot;,a);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>2.4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()<br>&#123;<br>	int n = 0;<br>	double m = 0;<br>	n = 10 / 2;<br>	m = 10.0 / 2.0;<br>	printf(&quot;整型常量除：%d\n&quot;, 10 / 2);<br>	printf(&quot;浮点型常量除：%f\n&quot;, 10.0 / 2.0);<br>	printf(&quot;int型常量除：%d\n&quot;, n);<br>	printf(&quot;double型常量除：%f\n&quot;, m);<br>	return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>2.5</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br><br>puts(&quot;请输入两个整数：&quot;);<br>printf(&quot;整数1:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数2:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;a的值是b的值的%f%%&quot;,(double)(a*100)/b);<br>return 0;&#125;<br></code></pre></td></tr></table></figure>
+<p>2.6</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>    int a;<br>    printf(&quot;请输入你的身高:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>    printf(&quot;您的标准体重是%。lf公斤&quot;,(a-100)*0.9);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2>第三章</h2>
+<p>3-1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br>printf(&quot;整数a:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>if(a/b)<br>puts(&quot;b不是a的约数&quot;);<br>else<br>puts(&quot;b是a的约数&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>3-2</p>
+<p>结果变得相反</p>
+
+<p>3-3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a;<br>printf(&quot;整数a:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>if(a==0)<br>printf(&quot;绝对值是0&quot;);<br>else if(a&gt;0)<br>printf(&quot;绝对值是%d&quot;,a);<br>else<br>printf(&quot;绝对值是%d&quot;,-a);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>3-4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br>printf(&quot;整数a:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>if(a==b)<br>printf(&quot;a和b相等&quot;);<br>else if(a&gt;b)<br>printf(&quot;a大于b&quot;);<br>else<br>printf(&quot;a小于b&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3-5</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()<br>&#123;<br>int a = 2;<br>int b = 3;<br><br>    printf(&quot;%d\n&quot;, a &gt; b);<br>    printf(&quot;%d\n&quot;, a &lt; b);<br>    printf(&quot;%d\n&quot;, a == b);<br>    printf(&quot;%d\n&quot;, a != b);<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3-6</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b,c,min;<br>puts(&quot;请输入三个整数。&quot;);<br>printf(&quot;整数a:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;整数c:&quot;);    scanf(&quot;%d&quot;,&amp;c);<br>min=a;<br>if(b&lt;min)  min=b;<br>if(c&lt;min)  min=c;<br>printf(&quot;他们的最小值是%d&quot;,min);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3-7</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b,c,d,max;<br>puts(&quot;请输入四个整数。&quot;);<br>printf(&quot;整数a:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;整数c:&quot;);    scanf(&quot;%d&quot;,&amp;c);<br>printf(&quot;整数d:&quot;);    scanf(&quot;%d&quot;,&amp;d);<br>max=a;<br>if(b&gt;max)  max=b;<br>if(c&gt;max)  max=c;<br>if(d&gt;max)  max=d;<br>printf(&quot;他们的最大值是%d&quot;,max);<br>return 0;<br></code></pre></td></tr></table></figure>
+<p>3-8</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int n1,n2;<br>puts(&quot;请输入两个整数&quot;);<br>printf(&quot;整数n1：&quot;);   scanf(&quot;%d&quot;,&amp;n1);<br>printf(&quot;整数n2：&quot;);   scanf(&quot;%d&quot;,&amp;n2);<br>if(n1&gt;n2)<br>printf(&quot;他们的差是%d&quot;,n1-n2);<br>else<br>printf(&quot;他们的差是%d&quot;,n2-n1);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>3-9</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int n1,n2;<br>puts(&quot;请输入两个整数&quot;);<br>printf(&quot;整数n1：&quot;);   scanf(&quot;%d&quot;,&amp;n1);<br>printf(&quot;整数n2：&quot;);   scanf(&quot;%d&quot;,&amp;n2);<br>n1==n2?printf(&quot;他们是相等数&quot;):printf(&quot;他们不是相等数&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3-10</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b,c,min;<br>puts(&quot;请输入三个整数。&quot;);<br>printf(&quot;整数a:&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);    scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;整数c:&quot;);    scanf(&quot;%d&quot;,&amp;c);<br>if(a==b&amp;&amp;a==c)<br>printf(&quot;三个值相等&quot;);<br>else if(a!=b&amp;&amp;a!=c&amp;a!=c)<br>printf(&quot;三个值不相等&quot;);<br>else<br>printf(&quot;有两个值相等&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>3-11</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br>puts(&quot;请输入两个整数&quot;);<br>printf(&quot;整数a:&quot;);   scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);   scanf(&quot;%d&quot;,&amp;b);<br>if(a-b&lt;=10||b-a&lt;=10)<br>printf(&quot;他们的差小于10&quot;);<br>else<br>printf(&quot;他们的差大于10&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>3-12</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main() &#123;<br>int no, a;<br>printf(&quot;请输入一个整数：&quot;);   scanf(&quot;%d&quot;, &amp;no);<br>a=no%2;<br>switch (a)&#123;<br>case 0:puts(&quot;输入的整数是偶数&quot;);     break;<br>case 1:puts(&quot;输入的整数是奇数&quot;);     break;<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>3-13</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include&lt;stdio.h&gt;<br>int main()<br>&#123;<br>int month;<br>printf(&quot;请输入月份：&quot;); scanf(&quot;%d&quot;, &amp;month);<br>switch (month)<br>&#123;<br>case 1:printf(&quot;%d月是冬季&quot;, month); break;<br>case 2:printf(&quot;%d月是冬季&quot;,month); break;<br>case 3:printf(&quot;%d月是春季&quot;,month); break;<br>case 4:printf(&quot;%d月是春季&quot;,month); break;<br>case 5:printf(&quot;%d月是春季&quot;,month); break;<br>case 6:printf(&quot;%d月是夏季&quot;,month); break;<br>case 7:printf(&quot;%d月是夏季&quot;,month); break;<br>case 8:printf(&quot;%d月是夏季&quot;,month); break;<br>case 9:printf(&quot;%d月是秋季&quot;,month); break;<br>case 10:printf(&quot;%d月是秋季&quot;,month); break;<br>case 11:printf(&quot;%d月是秋季&quot;,month); break;<br>case 12:printf(&quot;%d月是冬季&quot;,month); break;<br>default:printf(&quot;%d月不存在！&quot;,month); break;<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2>第四章</h2>
+<p>4-1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main() &#123;<br>int no, a;<br>printf(&quot;请输入一个整数：&quot;);   scanf(&quot;%d&quot;, &amp;no);<br>int retry;<br>do&#123;<br>if(no==0)<br>puts(&quot;该整数是零&quot;);<br>else if(no&gt;0)<br>puts(&quot;该整数大于零&quot;);<br>else<br>puts(&quot;该整数小于零&quot;);<br>printf(&quot;是否继续？&lt;yes---0,no--9&gt;:&quot;);  scanf(&quot;%d&quot;,&amp;retry);<br>&#125;while(retry==0);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b;<br>printf(&quot;请输入一个整数a:&quot;);   scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;请输入一个整数b:&quot;);  scanf(&quot;%d&quot;,&amp;b);<br>int sum=0;<br>if(a&gt;b)&#123;<br>int i=b;<br>do<br>&#123;<br>sum=sum+i;<br>i=i+1;<br>&#125;while(i&lt;=a);<br>printf(&quot;大于%d小于%d的所有整数和是%d\n&quot;,b,a,sum);<br>&#125;else&#123;<br>int i=a;<br>do&#123;<br>sum=sum+i;<br>i=i+1;<br>&#125;while(i&lt;=b);<br>printf(&quot;大于%d小于%d的所有整数和是%d\n&quot;,a,b,sum);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int n;<br>printf(&quot;请输入一个整数：&quot;);    scanf(&quot;%d&quot;,&amp;n);<br>if(n&gt;=0)&#123;<br>while(n&gt;=0)&#123;<br>printf(&quot;%d&quot;,n);<br>n--;&#125;<br>&#125;else<br>puts(&quot;&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4-4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int n;<br>printf(&quot;请输入一个整数：&quot;);    scanf(&quot;%d&quot;,&amp;n);<br>if(n&gt;=0)&#123;<br>while(n&gt;=1)&#123;<br>printf(&quot;%d&quot;,n);<br>n--;&#125;<br>&#125;else<br>puts(&quot;&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-5</p>
+#include <stdio.h>
+int main(){
+int i=1, n;
+printf("请输入一个整数：");    scanf("%d",&n);
+if(i>=0){
+while(n>=1){
+printf("%d",i++);
+n--;}
+}else
+puts("");
+return 0;
+}
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&lt;p&gt;<span class="hljs-number">4</span><span class="hljs-number">-6</span>&lt;/p&gt;<br>``` [c] bush<br><span class="hljs-meta">#include &lt;stdio.h&gt;</span><br><span class="hljs-type">int</span> main()&#123;<br><span class="hljs-type">int</span>  <span class="hljs-keyword">no</span>;<br>printf(&quot;请输入一个整数：&quot;);    scanf(&quot;%d&quot;,&amp;<span class="hljs-keyword">no</span>);<br><span class="hljs-type">int</span> i;<br><span class="hljs-keyword">while</span>(i&lt;=<span class="hljs-keyword">no</span>)&#123;<br>printf(&quot;%d&quot;,i);<br>i=i+<span class="hljs-number">2</span>;<br>&#125;<br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-7</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  no;<br>printf(&quot;请输入一个正整数：&quot;);    scanf(&quot;%d&quot;,&amp;no);<br>int i;<br>while(i&lt;=no)&#123;<br>printf(&quot;%d&quot;,i);<br>i=i*2;<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-8</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  no;<br>printf(&quot;正整数：&quot;);    scanf(&quot;%d&quot;,&amp;no);<br>int i;<br>if(no&gt;=1)&#123;<br>while(no--&gt;1)<br>putchar(&#x27;*&#x27;);<br>putchar(&#x27;\n&#x27;);   <br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-9</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  n;<br>printf(&quot;请输入正整数：&quot;);    scanf(&quot;%d&quot;,&amp;n);<br>int i=1;<br>if(n&gt;=0)&#123;<br>while(i&lt;=n)&#123;<br>if(i%2==0)&#123;<br>printf(&quot;-&quot;);<br>&#125;<br>else<br>printf(&quot;+&quot;);<br>i+=1;&#125;<br><br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4-10</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  n;<br>printf(&quot;请输入正整数：&quot;);    scanf(&quot;%d&quot;,&amp;n);<br>int i=1;<br>if(n&gt;=0)&#123;<br>while(n--&gt;0)&#123;<br>printf(&quot;-&quot;);&#125;<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4-11</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  n;<br>do &#123;<br>printf(&quot;请输入正整数：&quot;);<br>scanf(&quot;%d&quot;, &amp;n);<br>if(n&lt;=0)&#123;<br>puts(&quot;请不要输入一个正整数。&quot;);<br>&#125;<br>&#125;while(n&lt;=0);<br>printf(&quot;该整数的逆向显示的结果是&quot;);<br>while(n&gt;0)&#123;<br>printf(&quot;%d&quot;,n%10);<br>n/=10;<br>&#125;<br>puts(&quot;。&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4-12</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  n,cnt=0;<br>do &#123;<br>printf(&quot;请输入正整数：&quot;);<br>scanf(&quot;%d&quot;, &amp;n);<br>if(n&lt;=0)&#123;<br>puts(&quot;请不要输入一个正整数。&quot;);<br>&#125;<br>&#125;while(n&lt;=0);<br>printf(&quot;该整数的位数是&quot;);<br>while(n&gt;0)&#123;<br>n/=10;<br>cnt+=1;<br>&#125;<br>printf(&quot;%d&quot;,cnt);<br>puts(&quot;。&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-13</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int n,sum=0,i;<br>printf(&quot;n的值是：&quot;,n);<br>scanf(&quot;%d&quot;,&amp;n);<br>for(i=0;i&lt;=n;i++)&#123;<br>sum+=1;<br>&#125;<br>printf(&quot;1到%d:%d&quot;,n,sum);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-14</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,i;<br>printf(&quot;请输入一个整数：&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>for(i=1;i&lt;=a;i++)&#123;<br>printf (&quot;%d&quot;,i%10);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4-15</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,b,c;<br>printf(&quot;开始数值(cm)：&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;结束数值(cm)：&quot;);<br>scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;间隔数值(cm)：&quot;);<br>scanf(&quot;%d&quot;,&amp;c);<br><br>    for(;a&lt;=b;a+=c)&#123;<br>        printf(&quot;%dcm&quot;,a);<br>        printf(&quot;       &quot;);<br>        printf(&quot;%.2f&quot;,(double)(a-100)*0.9);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-16</p
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,i;<br>printf(&quot;整数值：&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>for(i+=1;i&lt;=a;i++)&#123;<br>if(i%2!=0)<br>printf(&quot;%d&quot;,i);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-17</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,i;<br>printf(&quot;整数值：&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>for(i+=1;i&lt;=a;i++)<br>printf(&quot;%d的二次方是:%d\n&quot;,i,i*i);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-18</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,i;<br>printf(&quot;显示多少个*&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>for(i+=1;i&lt;=a;i++)&#123;<br>printf(&quot;*&quot;);<br>if(i%5==0)<br>printf(&quot;\n&quot;);&#125;<br><br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-19</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int a,i,cnt;<br>printf(&quot;整数值：&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>for(i+=1;i&lt;=a;i++) &#123;<br>printf(&quot;*&quot;);<br>if (a % i == 0) &#123;<br>printf(&quot;\n&quot;);<br>cnt = 1;<br>&#125;<br>&#125;<br>printf(&quot;约数有:%d&quot;,cnt);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-20</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>printf(&quot; |&quot;);<br>int i,j;<br>for(i=1;i&lt;=9;i++)&#123;<br>printf(&quot;%3d&quot;,i);<br>&#125;<br>putchar(&#x27;\n&#x27;);<br>for (i=1;i&lt;=9;i++)&#123;<br>printf(&quot;----&quot;);<br>&#125;<br>putchar(&#x27;\n&#x27;);<br>for(i=1;i&lt;=9;i++)&#123;<br>printf(&quot;%d|&quot;,i);<br>for(j=1;j&lt;=9;j++)<br>printf(&quot;%3d&quot;,i*j);<br>putchar(&#x27;\n&#x27;);<br>&#125;return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-31</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>int main() &#123;<br>int a,b,c;<br>printf(&quot;生成一个正方形。&quot;);<br>printf(&quot;正方形有几层：&quot;);    scanf(&quot;%d&quot;,&amp;a);<br>for(b=1;b&lt;=a;b++)&#123;<br>for(c=1;c&lt;=a;c++)<br>putchar(&#x27;*&#x27;);<br>putchar(&#x27;\n&#x27;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-22</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main() &#123;<br>int a, b;<br>puts(&quot;让我们来画一个长方形&quot;);<br>printf(&quot;一边：&quot;);<br>scanf(&quot;%d&quot;, &amp;a);<br>printf(&quot;另一边：&quot;);<br>scanf(&quot;%d&quot;, &amp;b);<br>int h, w;<br>if (a &lt; b) &#123;<br>for (h = 1; h &lt;= a; h++) &#123;<br>for (w = 1; w &lt;= b; w++) &#123;<br>putchar(&#x27;*&#x27;);<br>&#125;<br>putchar(&#x27;\n&#x27;);<br>&#125;<br>&#125; else &#123;<br>for (h = 1; h &lt;= b; h++) &#123;<br>for (w = 1; w &lt;= a; w++) &#123;<br>putchar(&#x27;*&#x27;);<br>&#125;<br>putchar(&#x27;\n&#x27;);<br>&#125;<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p> 4.23 </p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs [c]">（1）左上角的等腰三角形<br><br>#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  i,j,len;<br>puts(&quot;生成直角在左上方的等腰直角三角形。&quot;);<br>printf(&quot;短边：&quot;);     scanf(&quot;%d&quot;,&amp;len);<br><br>for(i=1;i&lt;=len;i++)&#123;<br>for(j=0;j&lt;=len-i;j++)<br>putchar(&#x27;*&#x27;);<br>putchar(&#x27;\n&#x27;);&#125;<br><br>return 0;<br>&#125;<br>内循环结束了，外循环才能继续运行。<br><br>（2）右上方的等腰三角形<br><br>#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  i,j,len;<br>puts(&quot;生成直角在右上方的等腰直角三角形。&quot;);<br>printf(&quot;短边：&quot;);     scanf(&quot;%d&quot;,&amp;len);<br><br>for(i=0;i&lt;=len;i++)&#123;<br>for(j=1;j&lt;=len-i;j++)<br>putchar(&#x27;*&#x27;);<br>for(j=0;j&lt;=i;j++)<br>putchar(&#x27; &#x27;);<br>putchar(&#x27;\n&#x27;);&#125;<br><br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-24</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  i,j,len;<br>puts(&quot;让我们来画一个金字塔。&quot;);<br>printf(&quot;金字塔有几层：&quot;);     scanf(&quot;%d&quot;,&amp;len);<br>for(i=1;i&lt;=len;i++)&#123;<br>for(j=1;j&lt;=len-i;j++)<br>printf(&quot; &quot;);       /*输出左边的空格*/<br>for(j=1;j&lt;=(i-1);j++)<br>printf(&quot;*&quot;);      /*左侧的*号*/<br>printf(&quot;*&quot;);          /*中间的*号*/<br>for(j=1;j&lt;=(i-1);j++)<br>printf(&quot;*&quot;);         /*右侧的*号*/<br>printf(&quot;\n&quot;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4-25</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int  i,j,len;<br>puts(&quot;让我们来画一个向下金字塔。&quot;);<br>printf(&quot;金字塔有几层：&quot;);     scanf(&quot;%d&quot;,&amp;len);<br>for(i=1;i&lt;=len;i++)&#123;<br>for(j=1;j&lt;=i-1;j++)<br>printf(&quot; &quot;);       /*输出左边的空格*/<br>for(j=1;j&lt;=len-i;j++)<br>printf(&quot;%d&quot;,i%10);      /*左侧的*号*/<br>printf(&quot;%d&quot;,i%10);          /*中间的*号*/<br>for(j=1;j&lt;=len-i;j++)<br>printf(&quot;%d&quot;,i%10);         /*右侧的*号*/<br>printf(&quot;\n&quot;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2>第五章</h2>
+<p>5-1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i;<br>int v[5];<br>for(i=0;i&lt;5;i++)<br>v[i]=i;<br>for(i=0;i&lt;5;i++)<br>printf(&quot;[%d]=%d\n&quot;,i,v[i]);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<>5-2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i,c=5;<br>int v[5];<br>for(i=0;i&lt;5;i++)<br>v[i]=i+1;<br>for(i=0;i&lt;5;i++) &#123;<br>c--;<br>printf(&quot;[%d]=%d\n&quot;, i, v[c]);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>5-3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i;<br>int v[5]=&#123;5,4,3,2,1&#125;;<br>for(i=0;i&lt;5;i++)<br>printf(&quot;v[%d]=%d\n&quot;,i,v[i]);<br>return 0;<br>&#125;<br><br>#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i;<br>int a[5]=&#123;5,4,3,2,1&#125;;<br>int b[5];<br>for(i=0;i&lt;5;i++)<br>b[i]=a[i];<br>puts(&quot;   a   b&quot;);<br>puts(&quot;---------&quot;);<br>for (i=0;i&lt;5;i++)<br>printf(&quot;%4d%4d\n&quot;,a[i],b[i]);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>5-4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i;<br>int a[5]=&#123;36,23,17&#125;;<br>int b[5];<br>for(i=0;i&lt;5;i++)<br>b[4-i]=a[i];<br>puts(&quot;   a   b&quot;);<br>puts(&quot;---------&quot;);<br>for (i=0;i&lt;5;i++)<br>printf(&quot;%4d%4d\n&quot;,a[i],b[i]);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>5-5</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 7   /*数组元素总数*/<br>int main()&#123;<br>int i;<br>int x[NUMBER];<br>for(i=0;i&lt;NUMBER;i++)&#123;<br>printf(&quot;x[%d]:&quot;,i);<br>scanf(&quot;%d&quot;,&amp;x[i]);<br>&#125;<br>for (i=0;i&lt;NUMBER-4;i++)&#123;<br>int temp=x[i];<br>x[i]=x[NUMBER-1-i];<br>x[NUMBER-1-i]=temp;<br>&#125;<br>puts(&quot;倒序排列了。&quot;);<br>for(i=0;i&lt;NUMBER;i++)<br>printf(&quot;x[%d]=%d\n&quot;,i,x[i]);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>5-6</p>
+<p>a=1.0   b=1</p>
+
+<p>5-7</p>                                                                                                           
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 100    /*数组元素总数*/<br>int main()&#123;<br>int a,i;<br>int x[NUMBER];<br>printf(&quot;数据个数：&quot;);   scanf(&quot;%d&quot;,&amp;a);<br><br>for(i=0;i&lt;a;i++)&#123;<br>printf(&quot;x[%d]号:&quot;,i+1);<br>scanf(&quot;%d&quot;,&amp;x[i]);<br>&#125;<br>putchar(&#x27;&#123;&#x27;);<br>printf(&quot;%d&quot;,x[0]);<br>for(i=1;i&lt;a;i++)<br>&#123;<br>printf(&quot;， %d&quot;,x[i]);<br>&#125;<br>printf(&quot;&#125;\n&quot;);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>5-8<\p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 80   /*数组元素总数*/<br>int main()&#123;<br>int i,j;<br>int num;<br>int tensu[NUMBER];<br>int bunpu[11]=&#123;0&#125;;<br><br>    printf(&quot;请输入学生的人数：&quot;);<br>    do&#123;<br>        scanf(&quot;%d&quot;,&amp;num);<br>        if(num&lt;1||num&gt;NUMBER)<br>            printf(&quot;\a请输入1~%d的数： &quot;,NUMBER);<br>    &#125;while (num&lt;1||num&gt;NUMBER);<br> <br>    printf(&quot;请输入%d人的分数。\n&quot;,num);<br> <br>    for(i=0;i&lt;num;i++)&#123;<br>        printf(&quot;%2d号:&quot;,i+1);<br>        do&#123;<br>            scanf(&quot;%d&quot;,&amp;tensu[i]);<br>            if (tensu[i] &lt; 0 || tensu[i] &gt; 100)<br>                printf(&quot;\a请输入1~100的数：&quot;);<br>        &#125;while(tensu[i]&lt;0||tensu[i]&gt;100);<br>        bunpu[tensu[i]/10]++;<br>    &#125;<br> <br>    puts(&quot;\n----分布图-----&quot;);<br> <br>    for(i=0;i&lt;=9;i++)&#123;<br>        printf(&quot;%3d-%3d：&quot;,i*10,i*10+9);<br>        for(j=0;j&lt;=bunpu[i];j++)<br>            putchar(&#x27;*&#x27;);<br>        putchar(&#x27;\n&#x27;);<br>    &#125;<br>    <br>    printf(&quot;    100:&quot;);<br>    for(j=0;j&lt;bunpu[10];j++)&#123;<br>        putchar(&#x27;*&#x27;);&#125;<br>    putchar(&#x27;\n&#x27;);<br>    return 0;<br>&lt;/p&gt;<br><br>&lt;p&gt;5-9&lt;/p&gt;<br>``` [c] bush                                                                                                           <br>#include &lt;stdio.h&gt;<br><br>#define NUMBER 80<br><br>int main()<br>&#123;<br>int i,j;<br>int num;<br>int score[NUMBER];<br>int scattergram[11]=&#123;0&#125;;<br>int max;<br>int max_x;<br><br>    printf(&quot;请输入学生人数：&quot;);<br> <br>    do&#123;<br>        scanf(&quot;%d&quot;,&amp;num);<br>        if(num&lt;1 || num&gt;NUMBER)<br>            printf(&quot;请输入1~%d之间的整数：&quot;,NUMBER);<br>    &#125;while(num&lt;1 || num&gt;NUMBER);<br> <br>    printf(&quot;请输入%d人的分数。\n&quot;,num);<br>    for(i=0;i&lt;num;i++)<br>    &#123;<br>        printf(&quot;%d号：&quot;,i+1);<br>        do&#123;<br>            scanf(&quot;%d&quot;,&amp;score[i]);<br>            if(score[i]&lt;0 || score[i]&gt;100)<br>            &#123;<br>                printf(&quot;请输入0~100之间的整数：&quot;);<br>            &#125;<br>        &#125;while(score[i]&lt;0 || score[i]&gt;100);<br>        scattergram[score[i]/10]++;<br>    &#125;<br> <br>    max=scattergram[0];<br>    for(i=1;i&lt;11;i++)<br>    &#123;<br>        if(scattergram[i]&gt;max)<br>            max=scattergram[i];<br>    &#125;     /*确定最高层数*/<br> <br>    max_x=max;<br>    for(i=0;i&lt;max_x;i++)<br>    &#123;<br>        for(j=0;j&lt;11;j++)<br>        &#123;<br>            if(max&gt;scattergram[j])<br>                printf(&quot;    &quot;);<br>            else<br>                printf(&quot;*   &quot;);<br>        &#125;<br>        putchar(&#x27;\n&#x27;);<br> <br>        max -= 1;<br>    &#125;<br>    printf(&quot;--------------------------------------------\n&quot;);<br> <br>    for(i=1;i&lt;=11;i++)<br>    &#123;<br>        printf(&quot; %d &quot;,(i-1)*10);<br>    &#125;<br> <br>    putchar(&#x27;\n&#x27;);<br> <br>    return 0;<br>&#125;<br><br>垂直的直方图其实是一层一层打印出来的      if句确定他的最高层   然后再循环<br></code></pre></td></tr></table></figure>
+<p>5-10</p>                                                                                                         
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main() &#123;<br>int i, j, k;<br>int tensu1[4][3], tensu2[3][4];<br>int product[4][4] = &#123;0&#125;;<br><br>    puts(&quot;请输入第一个矩阵的具体元素&quot;);<br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 3; j++) &#123;<br>            printf(&quot;tensu1[%d][%d]: &quot;, i, j);<br>            scanf(&quot;%d&quot;, &amp;tensu1[i][j]);<br>        &#125;<br>    &#125;<br> <br>    puts(&quot;请输入第二个矩阵的具体元素&quot;);<br>    for (i = 0; i &lt; 3; i++) &#123;<br>        for (j = 0; j &lt; 4; j++) &#123;<br>            printf(&quot;tensu2[%d][%d]: &quot;, i, j);<br>            scanf(&quot;%d&quot;, &amp;tensu2[i][j]);<br>        &#125;<br>    &#125;<br> <br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 4; j++) &#123;<br>            for (k = 0; k &lt; 3; k++) &#123;<br>                product[i][j] += tensu1[i][k] * tensu2[k][j];<br>            &#125;<br>        &#125;<br>    &#125;<br> <br>    puts(&quot;显示矩阵1：&quot;);<br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 3; j++) &#123;<br>            printf(&quot;%6d&quot;, tensu1[i][j]);<br>        &#125;<br>        putchar(&#x27;\n&#x27;);<br>    &#125;<br> <br>    puts(&quot;显示矩阵2：&quot;);<br>    for (i = 0; i &lt; 3; i++) &#123;<br>        for (j = 0; j &lt; 4; j++) &#123;<br>            printf(&quot;%6d&quot;, tensu2[i][j]);<br>        &#125;<br>        putchar(&#x27;\n&#x27;);<br>    &#125;<br> <br>    puts(&quot;显示乘积矩阵：&quot;);<br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 4; j++) &#123;<br>            printf(&quot;%6d&quot;, product[i][j]);<br>        &#125;<br>        putchar(&#x27;\n&#x27;);<br>    &#125;<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>5-11</p>                                                                                                                                                                                                                      
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main() &#123;<br>int i, j=1;<br>int tensu1[6], tensu2[6];<br>int sum1=0, sum2=0, sum3=0;<br>puts(&quot;请输入六名学生的两门成绩&quot;);<br><br>    do&#123;j+=1;<br>        for (i = 0; i &lt; 6; i++) &#123;<br>            printf(&quot;%d号  &quot;, i + 1);<br>            do &#123;<br>                printf(&quot;语文：&quot;);<br>                scanf(&quot;%d&quot;, &amp;tensu1[i]);<br>                if (tensu1[i] &lt; 0 || tensu1[i] &gt; 100)<br>                    printf(&quot;请输入1~100的数：&quot;);<br>            &#125; while (tensu1[i] &lt; 0 || tensu1[i] &gt; 100);<br>            sum2 += tensu1[i];<br>        &#125;<br> <br>        for (i = 0; i &lt; 6; i++) &#123;<br>            printf(&quot;%d号  &quot;, i + 1);<br>            do &#123;<br>                printf(&quot;数学：&quot;);<br>                scanf(&quot;%d&quot;, &amp;tensu2[i]);<br>                if (tensu2[i] &lt; 0 || tensu2[i] &gt; 100)<br>                    printf(&quot;请输入1~100的数：&quot;);<br>            &#125; while (tensu2[i] &lt; 0 || tensu2[i] &gt; 100);<br>            sum3 += tensu2[i];<br>        &#125;<br> <br>        for (i = 0; i &lt; 6; i++) &#123;<br>            sum1 = tensu1[i] + tensu2[i];<br>            printf(&quot;%d号两门总分为%d,平均分为%.2f   &quot;,i+1,sum1, (double) sum1 / 2);<br>            putchar(&#x27;\n&#x27;);<br>        &#125;<br>     putchar(&#x27;\n&#x27;);<br>    &#125;while(j&gt;6);<br>    <br>    printf(&quot;语文的总分：%5d,平均分:%.2f\n&quot;,sum2,(double)sum2/6);<br>    printf(&quot;数学的总分：%5d,平均分:%.2f\n&quot;,sum3,(double)sum3/6);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>5-12</p>   
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()<br>&#123;<br>int i,j,k;<br>int course[2][4][3]=&#123;&#123;&#123;91,63,78&#125;,&#123;67,72,46&#125;,&#123;89,34,53&#125;,&#123;32,54,34&#125;&#125;,<br>&#123;&#123;97,67,82&#125;,&#123;73,43,46&#125;,&#123;97,56,21&#125;,&#123;85,46,35&#125;&#125;&#125;;<br><br>    for(i=0;i&lt;2;i++)<br>    &#123;<br>        printf(&quot;第%d次考试的分数\n&quot;,i+1);<br>        for(j=0;j&lt;4;j++)<br>        &#123;<br>            printf(&quot;%d:&quot;,j+1);<br>            for(k=0;k&lt;3;k++)<br>            &#123;<br>                printf(&quot;%4d&quot;,course[i][j][k]);<br>            &#125;<br>            putchar(&#x27;\n&#x27;);<br>        &#125;<br>        putchar(&#x27;\n&#x27;);<br>    &#125;<br>    <br>    puts(&quot;总分&quot;);<br>    for(i=0;i&lt;1;i++)<br>    &#123;<br>        for(j=0;j&lt;4;j++)<br>        &#123;<br>            printf(&quot;%d:&quot;,j+1);<br>            for(k=0;k&lt;3;k++)<br>            &#123;<br>                printf(&quot;%4d&quot;,course[i][j][k]+course[i+1][j][k]);<br>            &#125;<br>            putchar(&#x27;\n&#x27;);<br>        &#125;<br>    &#125;<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>第六章</p>       
+<p>6-1</p>
+
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int min2(int a,int b) &#123;<br>if (a &lt; b)<br>return a;<br>else<br>return b;<br>&#125;<br>int main()&#123;<br>int a,b;<br>puts(&quot;请输入两个整数：&quot;);<br>printf(&quot;整数a:&quot;);   scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;整数b:&quot;);   scanf(&quot;%d&quot;,&amp;b);<br>printf(&quot;最小值是%d。\n&quot;,min2(a,b));<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int min3(int a,int b,int c) &#123;<br>int min=a;<br>if(b&lt;min)     b=min;<br>if(c&lt;min)     c=min;<br>return min ;<br>&#125;<br><br>    int main()&#123;<br>        int a,b,c;<br>        puts(&quot;请输入三个整数：&quot;);<br>        printf(&quot;整数a:&quot;);   scanf(&quot;%d&quot;,&amp;a);<br>        printf(&quot;整数b:&quot;);   scanf(&quot;%d&quot;,&amp;b);<br>        printf(&quot;整数c:&quot;);   scanf(&quot;%d&quot;,&amp;c);<br>        printf(&quot;最小值是%d。\n&quot;,min3(a,b,c));<br>        return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>6-3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int cbue(int x) &#123;<br>return x*x*x;<br>&#125;<br>int main()&#123;<br>int x;<br>printf(&quot;请输入一个整数：&quot;);<br>scanf(&quot;%d&quot;,&amp;x);<br>printf(&quot;该整数的立方是：%d&quot;,cbue(x));<br>return 0;<br>&#125;<br>6-4<br>#include &lt;stdio.h&gt;<br>int  spr(int x) &#123;<br>return x*x;<br>&#125;<br>int pow4(int x)&#123;<br>return spr(x*x);<br>&#125;<br>int main()&#123;<br>int x;<br>printf(&quot;请输入一个整数：&quot;);<br>scanf(&quot;%d&quot;,&amp;x);<br>printf(&quot;该整数的四次方是：%d&quot;,pow4(x));<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-5</p>  
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int  sumup(int n) &#123;<br>int i;<br>int tmp=0;<br>for(i=1;i&lt;=n;i++)<br>tmp+=i;<br>return tmp;<br><br>&#125;<br>int main()&#123;<br>int a;<br>printf(&quot;请输n的值：&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>printf(&quot;从1到%d和是：%d&quot;,a, sumup(a));<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-6</p>
+
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>void alert(int n) &#123;<br>while(n--&gt;0)<br>putchar(&#x27;\a&#x27;);<br><br>&#125;<br>int main()&#123;<br>int a;<br>printf(&quot;请输入多少次铃声&quot;);<br>scanf(&quot;%d&quot;,&amp;a);<br>alert(a);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-7</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>void hello(void)&#123;<br>printf(&quot;你好.\n&quot;);<br>&#125;<br>int main()&#123;<br>hello();<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-8</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 5<br>int min_of(const int v[],int n)&#123;<br>int i;<br>int min=v[0];<br>for(i=1;i&lt;n;i++)<br>if(v[i]&lt;min)<br>min=v[i];<br>return min;<br>&#125;<br>int main()&#123;<br>int i;<br>int v[NUMBER]=&#123;0&#125;;<br>printf(&quot;请输入%d个元素:&quot;,NUMBER);<br>for (i=0;i&lt;NUMBER;i++)<br>&#123;<br>printf(&quot;%d：&quot;,i+1);<br>scanf(&quot;%d&quot;,&amp;v[i]);<br>&#125;<br>printf(&quot;最小值是%d。\n&quot;,min_of(v,NUMBER));<br>return 0;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-9</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 7<br><br>void rev_intary(int v[],int n)&#123;<br>int i;<br>for(i=0;i&lt;n-4;i++)<br>&#123;<br>int temp=v[i];<br>v[i] =v[n-1-i];<br>v[n-1-i]=temp;<br>&#125;<br><br>&#125;<br><br>int main()&#123;<br>int i;<br>int x[NUMBER];<br>for(i=0;i&lt;NUMBER;i++) &#123;<br>printf(&quot;x[%d]&quot;, i);<br>scanf(&quot;%d&quot;, &amp;x[i]);<br>&#125;<br>rev_intary(x,NUMBER);<br><br>    puts(&quot;倒序排列了！&quot;);<br> <br>    for (i=0;i&lt;NUMBER;i++)<br>    &#123;<br>        printf(&quot;x[%d]：%d\n&quot;,i,x[i]);<br>    &#125;<br> <br>    return 0;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-10</p>
+
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 7<br><br>void rev_intary(int v[], int n) &#123;<br>int i;<br>for (i = 0; i &lt; n / 2; i++) &#123;<br>int temp = v[i];<br>v[i] = v[n - 1 - i];<br>v[n - 1 - i] = temp;<br>&#125;<br>&#125;<br><br>void intary_rcpy(int v1[], const int v2[], int n) &#123;<br>int i;<br>for (i = 0; i &lt; n; i++) &#123;<br>v1[i] = v2[i];<br>&#125;<br>&#125;<br><br>int main() &#123;<br>int i;<br>int v1[NUMBER];<br>int v2[NUMBER];<br><br>    for (i = 0; i &lt; NUMBER; i++) &#123;<br>        printf(&quot;v[%d]: &quot;, i);<br>        scanf(&quot;%d&quot;, &amp;v2[i]);<br>    &#125;<br>    <br>    rev_intary(v2, NUMBER);<br>    intary_rcpy(v1, v2, NUMBER);<br> <br>    puts(&quot;倒序排列了！&quot;);<br> <br>    for (i = 0; i &lt; NUMBER; i++) &#123;<br>        printf(&quot;v2[%d]: %d\n&quot;, i, v2[i]);<br>    &#125;<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-11</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 7<br>#define FAILED -1<br><br>int search_idx(const int v[], int idx[], int key, int n) &#123;<br>int i;<br>int temp = 0;<br><br>    for (i = 0; i &lt; n; i++) &#123;<br>        if (v[i] == key) &#123;<br>            idx[temp] = i;<br>            temp += 1;<br>        &#125;<br>    &#125;<br>    return (temp &gt; 0) ? temp : FAILED;<br>&#125;<br><br>int main() &#123;<br>int i, ky, y;<br>int idx[NUMBER], vx[NUMBER + 1];<br>for (i = 0; i &lt; NUMBER; i++) &#123;<br>printf(&quot;vx[%d]:&quot;, i);<br>scanf(&quot;%d&quot;, &amp;vx[i]);<br>&#125;<br>printf(&quot;要查找的值:&quot;);<br>scanf(&quot;%d&quot;, &amp;ky);<br>y = search_idx(vx, idx, ky, NUMBER);<br>if (y == FAILED)<br>puts(&quot;\a查找失败。&quot;);<br>else<br>printf(&quot;%d&quot;, y);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>6-12</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>void mat_mul(const int a[4][3],const int b [3][4],int c[4][3])&#123;<br>int i, j, k;<br><br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 3; j++) &#123;<br>            c[i][j] = 0; &#125;<br>            for (k = 0; k &lt; 3; k++) &#123;<br>                c[i][j] += a[i][k] * b[k][j];<br>            &#125;<br>        &#125;<br>    &#125;<br><br>int main()&#123;<br>int i,j;<br>int tensu1[4][3],tensu2[3][4],tensu3[3][3];<br>puts(&quot;请输入4行3列矩阵元素&quot;);<br>for(i=0;i&lt;4;i++)&#123;<br>for(j=0;j&lt;3;j++)&#123;<br>printf(&quot;tensu[%d][%d]=&quot;,i,j);<br>scanf(&quot;%d&quot;,&amp;tensu1[i][j]);<br>&#125;<br>&#125;<br>puts(&quot;请输入3行4列矩阵元素&quot;);<br>for(i=0;i&lt;3;i++)&#123;<br>for(j=0;j&lt;4;j++)&#123;<br>printf(&quot;[tensu2[%d][%d]=&quot;,i,j);<br>scanf(&quot;%d&quot;,&amp;tensu1[i][j]);<br>&#125;<br>&#125;<br>mat_mul(tensu1,tensu2,tensu3);<br>printf(&quot;两个矩阵的乘积为:\n&quot;);<br>for (i = 0; i &lt; 4; i++) &#123;<br>for (j = 0; j &lt; 3; j++) &#123;<br>printf(&quot;%4d&quot;, tensu3[i][j]);<br>&#125;<br>putchar(&#x27;\n&#x27;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-13</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>void mat_add(const int a[4][3], const int b[4][3], int c[2][4][3]) &#123;<br>int i, j;<br><br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 3; j++) &#123;<br>            c[0][i][j] = a[i][j]; // 存储第一次考试的分数<br>            c[1][i][j] = b[i][j]; // 存储第二次考试的分数<br>        &#125;<br>    &#125;<br>&#125;<br><br>void mat_print(const int m[4][3]) &#123;<br>int i, j;<br><br>    for (i = 0; i &lt; 4; i++) &#123;<br>        for (j = 0; j &lt; 3; j++) &#123;<br>            printf(&quot;%4d&quot;, m[i][j]);<br>        &#125;<br>        putchar(&#x27;\n&#x27;);<br>    &#125;<br>&#125;<br><br>int main() &#123;<br>int tensu1[4][3] = &#123;&#123;91, 63, 78&#125;, &#123;67, 72, 46&#125;, &#123;89, 34, 53&#125;, &#123;32, 54, 34&#125;&#125;;<br>int tensu2[4][3] = &#123;&#123;97, 67, 82&#125;, &#123;73, 43, 46&#125;, &#123;97, 56, 21&#125;, &#123;85, 46, 35&#125;&#125;;<br>int sum[2][4][3];<br><br>    mat_add(tensu1, tensu2, sum);<br>    puts(&quot;第一次考试的分数&quot;);<br>    mat_print(tensu1);<br>    puts(&quot;第二次考试的分数&quot;);<br>    mat_print(tensu2);<br>    puts(&quot;总分（储存在三维数组中）&quot;);<br>    for (int i = 0; i &lt; 2; i++) &#123;<br>        for (int j = 0; j &lt; 4; j++) &#123;<br>            for (int k = 0; k &lt; 3; k++) &#123;<br>                printf(&quot;%4d&quot;, sum[i][j][k]);<br>            &#125;<br>            putchar(&#x27;\n&#x27;);<br>        &#125;<br>    &#125;<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-14</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int fx;<br>int main()&#123;<br>int i;<br>static double sa[5];<br>for(i=0;i&lt;5;i++)<br>printf(&quot;sa[%d]=%.1f\n&quot;,i,sa[i]);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6-15</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int x;<br>void put_count()&#123;<br>printf(&quot;put_count:第%d次&quot;,x+1);<br>x++;<br>putchar(&#x27;\n&#x27;);<br>&#125;<br>int main ()&#123;<br>int i,j;<br>printf(&quot;要调用多少次：&quot;);<br>scanf(&quot;%d&quot;,&amp;i);<br>for(j=0;j&lt;i;j++)&#123;<br>put_count();<br><br>    &#125;<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2>第八章</h2>
+<p>8-1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>#define diff(x,y) ((x)-(y))<br><br>int main()<br>&#123;<br>int x,y;<br><br>    printf(&quot;请输入两个整数：&quot;);<br>    scanf(&quot;%d %d&quot;,&amp;x,&amp;y);<br>    printf(&quot;两数之差为%d。\n&quot;,x&gt;y?diff(x,y):diff(y,x));<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>#define swap(type,a,b) &#123;type temp;temp=(a);(a)=(b);(b)=temp;&#125;<br><br>int main()<br>&#123;<br>int x,y;<br><br>    printf(&quot;x = &quot;);    scanf(&quot;%d&quot;,&amp;x);<br>    printf(&quot;y = &quot;);    scanf(&quot;%d&quot;,&amp;y);<br>    swap(int,x,y);<br>    printf(&quot;这两个数已经互换了。\n&quot;);<br>    printf(&quot;x = %d\n&quot;,x);<br>    printf(&quot;y = %d\n&quot;,y);<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>8-4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br># define NUMBER 5<br>void bsort(int a[],int n)&#123;<br>int i,j;<br>for(i=n-1;i&gt;0;i--)&#123;<br>for(j=0;j&lt;i;j++)&#123;<br>if(a[j]&lt;a[j+1])&#123;<br>int temp =a[j];<br>a[j]=a[j+1];<br>a[j+1]=temp;<br>&#125;<br>&#125;<br>&#125;<br>&#125;<br>int main()&#123;<br>int i;<br>int height[NUMBER];<br>printf(&quot;请输入%d人的身高。\n&quot;,NUMBER);<br>for(i=0;i&lt;NUMBER;i++)&#123;<br>printf(&quot;%2d号：&quot;,i+1);<br>scanf(&quot;%d&quot;,&amp;height[i]);<br>&#125;<br>bsort(height,NUMBER);<br>puts(&quot;按降序排列。&quot;);<br>for(i=0;i&lt;NUMBER;i++)&#123;<br>printf(&quot;%2d号：%d\n&quot;,i+1,height[i]);<br><br>    &#125;<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-5</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>enum sex &#123;male,female&#125;;<br>enum season    &#123;spring=1,summer,autumn,winter&#125;;<br><br>void select_sex(enum sex m)&#123;<br>switch(m)&#123;<br>case male:printf(&quot;先生&quot;); break;<br>case female:printf(&quot;女士&quot;);break;<br>default :printf(&quot;请正确选择性别！&quot;);  break;<br>&#125;<br>&#125;<br><br>void select_season (int n)&#123;<br>switch (n)<br>&#123;<br>case spring    :    puts(&quot;你最喜欢的是春季。&quot;);        break;<br>case summer    :    puts(&quot;你最喜欢的是夏季。&quot;);        break;<br>case autumn    :    puts(&quot;你最喜欢的是秋季。&quot;);        break;<br>case winter    :    puts(&quot;你最喜欢的是冬季。&quot;);        break;<br>default        :    puts(&quot;请正确选择季节。&quot;);        break;<br>&#125;<br><br>&#125;<br>int main()<br>&#123;<br>enum sex a;<br>int b;<br><br>    printf(&quot;请选择你的性别【0…男士】【1…女士)】：&quot;);<br>    scanf(&quot;%d&quot;,&amp;a);<br> <br>    printf(&quot;你最喜欢的季节是【1…春季】【2…夏季】【3…秋季】【4…冬季】：&quot;);<br>    scanf(&quot;%d&quot;,&amp;b);<br> <br>    select_sex(a);<br>    select_season(b);<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-6</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int factorial(int n) &#123;<br>int result = 1;<br><br>    for (int i = 1; i &lt;= n; i++) <br>        result *= i;<br>    return result;<br>&#125;<br><br>int main() &#123;<br>int num;<br>printf(&quot;请输入一个整数：&quot;);<br>scanf(&quot;%d&quot;, &amp;num);<br><br>    if (num &lt; 0) &#123;<br>        printf(&quot;阶乘只定义于非负整数。\n&quot;);<br>    &#125; else &#123;<br>        printf(&quot;该整数的阶乘为 %d.\n&quot;, factorial(num));<br>    &#125;<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-7<p></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include&lt;stdio.h&gt;<br><br>int combination(int n,int r);<br><br>int main(void)<br>&#123;<br>int n;<br>int r;<br><br>    do<br>    &#123;<br>        printf(&quot;请输入整数n：&quot;);<br>        scanf(&quot;%d&quot;,&amp;n);<br>        printf(&quot;请输入整数r：&quot;);<br>        scanf(&quot;%d&quot;,&amp;r);<br>        if(n&lt;=0||r&lt;0||n&lt;r)<br>        &#123;<br>            puts(&quot;请输入正确数量！&quot;);<br>        &#125;<br>    &#125;while(n&lt;=0||r&lt;0||n&lt;r);<br> <br>    printf(&quot;%d个整数中取%d个整数的组合数为%d。\n&quot;,n,r,combination(n,r));<br> <br>    return 0;<br>&#125;<br><br>int combination(int n,int r)<br>&#123;<br>if (r == 1)<br>&#123;<br>return n;<br>&#125;<br>else if (r==0 || r==n)<br>&#123;<br>return 1;<br>&#125;<br>else<br>&#123;<br>return combination(n-1,r-1)+combination(n-1,r);<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-8</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>int gcd(int x, int y) &#123;<br>if (y == 0) &#123;<br>return x;<br>&#125; else &#123;<br>return gcd(y, x % y);<br>&#125;<br>&#125;<br><br>int main() &#123;<br>int x = 48;<br>int y = 18;<br>int result = gcd(x, y);<br>printf(&quot;GCD of %d and %d is %d\n&quot;, x, y, result);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-9</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i=1,ch;<br>while((ch=getchar())!=EOF)&#123;<br>switch(ch)&#123;<br>case &#x27;\n&#x27;: i++; break;<br>&#125;<br>&#125;<br>printf(&quot;标准输入中出现的行数：%d&quot;,i);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>8-10</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>int i,ch;<br>int cnt[10]=&#123;0&#125;;<br>while((ch=getchar())!=EOF)&#123;<br>if(ch&gt;=&#x27;0&#x27;&amp;&amp;ch&lt;=&#x27;9&#x27;)<br>cnt[ch-&#x27;0&#x27;]++;<br>&#125;<br>puts(&quot;数字字符串的出现次数&quot;);<br>for(i=0;i&lt;10;i++)&#123;<br>printf(&quot;%d:&quot;,i);<br>for (int j = 0; j &lt; cnt[i]; j++) &#123;<br>putchar(&#x27;*&#x27;);&#125;<br>putchar(&#x27;\n&#x27;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2>第九章</h2>
+<p>9-1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int main()&#123;<br>char str[]=&quot;ABC\0DEF&quot;;<br>printf(&quot;字符串str为\&quot;%s\&quot;。\n&quot;,str);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>int main()<br>&#123;<br>char s[]=&quot;ABC&quot;;<br><br>    s[0]=&#x27;\0&#x27;;<br> <br>    printf(&quot;字符串s为%s。\n&quot;,s);<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-3</p>
+
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 10<br>int myStrcmpWithoutPointers(const char str1[], const char str2[]) &#123;<br>int i = 0;<br><br>    while (str1[i] != &#x27;\0&#x27; &amp;&amp; str2[i] != &#x27;\0&#x27;) &#123;<br>        if (str1[i] != str2[i]) &#123;<br>            return str1[i] - str2[i];<br>        &#125;<br>        i++;<br>    &#125;<br>    return str1[i] - str2[i];<br>&#125;<br>int main()<br>&#123;<br>int i;<br>char s[NUMBER][128];<br>for(i=0;i&lt;NUMBER;i++)&#123;<br>printf(&quot;s[%d]:&quot;,i);<br>scanf(&quot;%s&quot;,s[i]);<br>if (myStrcmpWithoutPointers(s[i], &quot;$$$$$&quot;) == 0)<br>break;<br>&#125;<br>for(i=0;i&lt;NUMBER;i++)<br>printf(&quot;s[%d]=\&quot;%s\&quot;\n&quot;,i,s[i]);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-4</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>void null_string(char s[])&#123;<br>s[0] = &#x27;\0&#x27;;<br>&#125;<br><br>int main()&#123;<br>char s[] = &quot;abc&quot;;<br>null_string(s);<br>printf(&quot;该字符串为: \&quot;%s\&quot;&quot;, s);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-5</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int  str_char(const  char s[],int c)&#123;<br>int i=0;<br>while(s[i])<br>&#123;<br>if(s[i]==&#x27;c&#x27;)&#123;<br>return i;<br>&#125;<br>i++;<br>&#125;<br>return -1;<br>&#125;<br>int main() &#123;<br>char s[] = &quot;example&quot;;<br>int index = str_char(s, &#x27;c&#x27;);<br>if (index != -1) &#123;<br>printf(&quot;字符 &#x27;c&#x27; 在字符串中的索引是 %d\n&quot;, index);<br>&#125; else &#123;<br>printf(&quot;字符 &#x27;c&#x27; 未在字符串中找到\n&quot;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-6</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int  str_char(const  char s[],int c)&#123;<br>int i=0,j=0;<br><br>    while(s[i])<br>    &#123;<br>        if(s[i]==&#x27;c&#x27;)&#123;<br>            j+=1;<br>        &#125;<br>        i++;<br>    &#125;<br>    return j;<br>&#125;<br>int main() &#123;<br>char s[] = &quot;cexcamplec&quot;;<br>int index = str_char(s, &#x27;c&#x27;);<br>if (index != 0) &#123;<br>printf(&quot;字符 &#x27;c&#x27; 有： %d个\n&quot;, index);<br>&#125; else &#123;<br>printf(&quot;字符 &#x27;c&#x27; 未在字符串中找到\n&quot;);<br>&#125;<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-7 </p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>void put_stringn(const char s[], int n) &#123;<br>for (int i = 0; i &lt; n; i++) &#123;<br>for (int j = 0; s[j] != &#x27;\0&#x27;; j++) &#123;<br>putchar(s[j]);<br>&#125;<br>&#125;<br>&#125;<br><br>int main() &#123;<br>int j;<br>char str[128];<br>printf(&quot;请输入字符: &quot;);<br>scanf(&quot;%s&quot;, str);<br>printf(&quot;要重复多少次：&quot;);<br>scanf(&quot;%d&quot;, &amp;j);<br>printf(&quot;%s字符重复%d次为:&quot;, str, j);<br><br>    put_stringn(str, j);<br>    printf(&quot;.\n&quot;);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>9-8</p>p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>void put_string(const char s[])<br>&#123;int len=0;<br>while(s[len])<br>len++;<br>int i;<br>for(i=len-1;i&gt;=0;i--)<br>putchar(s[i]);<br>&#125;<br><br><br>int main()<br>&#123;<br>char str[128];<br><br>    printf(&quot;请输入一个字符串：&quot;);<br>    scanf(&quot;%s&quot;,str);<br> <br>    printf(&quot;字符串\&quot;%s\&quot;逆向后：&quot;,str);<br>    put_string(str);<br> <br>    return 0;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p> 9-9 </p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER 128<br><br>void put_stringn(char s[]) &#123;<br>int len = 0;<br><br>    while (s[len] != &#x27;\0&#x27;) &#123;<br>        len++;<br>    &#125;/*计算字符串长度*/<br> <br>    for (int i = 0; i &lt; len / 2; i++) &#123;<br>        char temp = s[i];<br>        s[i] = s[len - 1 - i];<br>        s[len - 1 - i] = temp;<br>    &#125;<br>&#125;<br><br>int main() &#123;<br>char str[NUMBER];<br>printf(&quot;请输入字符: &quot;);<br>scanf(&quot;%s&quot;, str);<br>printf(&quot;%s字符的逆向显示：&quot;, str);<br><br>    put_stringn(str);<br> <br>    printf(&quot;%s.\n&quot;, str);<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-10</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>void del_digit(char s[])<br>&#123;<br>int i = 0;<br>int j = 0;<br>char temp[128] = &#123;0&#125;;<br><br>    while (s[i])<br>    &#123;<br>        if (s[i] &lt; &#x27;0&#x27; || s[i] &gt; &#x27;9&#x27;)<br>        &#123;<br>            temp[j] = s[i];<br>            j++;<br>        &#125;<br>        i++;<br>    &#125;<br> <br>    j = 0;<br>    while (temp[j])<br>    &#123;<br>        s[j] = temp[j];<br>        j++;<br>    &#125;<br>    s[j] = &#x27;\0&#x27;;<br>&#125;<br><br><br>int main()<br>&#123;<br>int i;<br>char str[128];<br><br>    printf(&quot;请输入一个字符串：&quot;);<br>    scanf(&quot;%s&quot;, str);<br> <br>    del_digit(str);<br>    printf(&quot;删除数字后：%s\n&quot;, str);<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-11</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>#define NUMBER1 10<br>#define NUMBER2 128<br>void put_strary(const char s[][NUMBER2], int n) &#123;<br>int i;<br>for (i = 0; i &lt; n; i++)<br>printf(&quot;s[%d]=\&quot;%s\&quot;\n&quot;, i, s[i]);<br>&#125;<br><br>int myStrcmpWithoutPointers(const char str1[], const char str2[]) &#123;<br>int i = 0;<br>while (str1[i] != &#x27;\0&#x27; &amp;&amp; str2[i] != &#x27;\0&#x27;) &#123;<br>if (str1[i] != str2[i]) &#123;<br>return str1[i] - str2[i];<br>&#125;<br>i++;<br>&#125;<br>return str1[i] - str2[i];<br>&#125;<br><br>int main() &#123;<br>int i;<br>char cs[NUMBER1][NUMBER2];<br>for (i = 0; i &lt; NUMBER1; i++) &#123;<br>printf(&quot;s[%d]:&quot;, i);<br>scanf(&quot;%s&quot;, cs[i]);<br>if (myStrcmpWithoutPointers(cs[i], &quot;$$$$$&quot;) == 0)<br>break;<br>&#125;<br>put_strary(cs, i);<br>return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>9-12</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>int str_len(char s[])&#123;<br>int len=0 ;<br>while(s[len]!=&#x27;\0&#x27;)&#123;<br>len++;<br>&#125;<br>return len;<br>&#125;<br>void rev_string(char s[][128], int n) &#123;<br>int i, j;<br>for (i = 0; i &lt; n; i++) &#123;<br>int len = str_len(s[i]);<br>for (j = 0; j &lt; len / 2; j++) &#123;<br>char temp = s[i][j];<br>s[i][j] = s[i][len - 1 - j];<br>s[i][len - 1 - j] = temp;<br>&#125;<br>&#125;<br>&#125;<br>int main() &#123;<br>char strings[][128] = &#123;&quot;SEC&quot;, &quot;ABC&quot;&#125;;<br>int num_strings = 2;<br><br>    rev_string(strings, num_strings);<br> <br>    for (int i = 0; i &lt; num_strings; i++) &#123;<br>        printf(&quot;%s\n&quot;, strings[i]);<br>    &#125;<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2>第十章</h2>
+<p>10-1</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br>void adjust_point(int *n)&#123;<br>if(*n&lt;0)<br>*n=0;<br>if(*n&gt;100)<br>*n=100;<br>&#125;<br>int main()&#123;<br>int i;<br>printf(&quot;请输入一个数字：&quot;);<br>scanf(&quot;%d&quot;,&amp;i);<br>adjust_point(&amp;i);<br>printf(&quot;该数字为：%d&quot;,i);<br>return 0;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+10-2
+<p>10-3</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs [c]">#include &lt;stdio.h&gt;<br><br>void sort3(int *n1,int *n2,int *n3)<br>&#123;<br>int temp;<br><br>    if(*n1&gt;*n2)<br>    &#123;<br>        temp=*n1;<br>        *n1=*n2;<br>        *n2=temp;<br>    &#125;<br> <br>    if(*n1&gt;*n3)<br>    &#123;<br>        temp=*n1;<br>        *n1=*n3;<br>        *n3=temp;<br>    &#125;<br> <br>    if(*n2&gt;*n3)<br>    &#123;<br>        temp=*n2;<br>        *n2=*n3;<br>        *n3=temp;<br>    &#125;<br>&#125;<br><br><br>int main()<br>&#123;<br>int a,b,c;<br><br>    printf(&quot;整数a：&quot;);	scanf(&quot;%d&quot;,&amp;a);<br>    printf(&quot;整数b：&quot;);	scanf(&quot;%d&quot;,&amp;b);<br>    printf(&quot;整数c：&quot;);	scanf(&quot;%d&quot;,&amp;c);<br> <br>    sort3(&amp;a,&amp;b,&amp;c);<br> <br>    printf(&quot;a = %d\nb = %d\nc = %d\n&quot;,a,b,c);<br> <br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/c/" class="print-no-link">#c</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>明解C语言课后练习</div>
+      <div>http://example.com/2024/09/15/MingJieC-exerices/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>X-994</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/15/hexo+github/" title="hexo+github+Zeabur搭建博客">
+                        <span class="hidden-mobile">hexo+github+Zeabur搭建博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"YhmdYh8xooZMmP5AVRg8vq7k-MdYXbMMI","appKey":"s4Nu6SbkKXU7Mjoi3H1Xov8u","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://yhmdyh8x.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
