@@ -1,0 +1,764 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/null">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="X-994">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="花钱买自律，记录下过程,都是用C来实现的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码随想录一刷">
+<meta property="og:url" content="http://example.com/2024/09/16/DaiMaSuiXiang-1/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="花钱买自律，记录下过程,都是用C来实现的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/704.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/34.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/35.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/27.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/997.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/209.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/59.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/707">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/206">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/24.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/19.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/02.07.png">
+<meta property="og:image" content="http://example.com/img/DaiMaSuiXiang_1/142.png">
+<meta property="article:published_time" content="2024-09-16T09:03:16.000Z">
+<meta property="article:modified_time" content="2024-09-19T00:53:24.711Z">
+<meta property="article:author" content="X-994">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/DaiMaSuiXiang_1/704.png">
+  
+  
+  
+  <title>代码随想录一刷 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/mk.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/selection.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="代码随想录一刷"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-16 17:03" pubdate>
+          2024年9月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">代码随想录一刷</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><h3 id="704-二分查找"><a href="#704-二分查找" class="headerlink" title="704.二分查找"></a>704.二分查找</h3><p><img src="/../img/DaiMaSuiXiang_1/704.png" srcset="/img/loading.gif" lazyload><br>第一种（左闭右闭）</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int search(int* nums, int numsSize, int target) &#123;<br>    int left = 0;<br>    int right = numsSize - 1;<br>    int middle;<br>    while(left &lt;= right)&#123;<br>         middle = (left + right) / 2;<br>        if(target &lt; nums[middle])<br>            right = middle - 1;<br>        else if(target &gt;nums[middle] )<br>            left =  middle + 1;<br>        else<br>            return middle;<br>    &#125;<br>    return -1;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>第二种（左闭右开）</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int search(int* nums, int numsSize, int target) &#123;<br>    int left = 0;<br>    int right = numsSize;<br>    int middle;<br>    while(left &lt; right)&#123;<br>         middle = (left + right) / 2;<br>        if(target &lt; nums[middle])<br>            right = middle;<br>        else if(target &gt;nums[middle] )<br>            left =  middle + 1;<br>        else<br>            return middle;<br>    &#125;<br>    return -1;<br></code></pre></td></tr></table></figure>
+
+<p><strong>总结</strong><br>二分法就是化一为二，将问题细分，当是一个有序的数组才可以使用，区间的选择决定了while的条件和right的值</p>
+<h3 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="#34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="34. 在排序数组中查找元素的第一个和最后一个位置"></a>34. 在排序数组中查找元素的第一个和最后一个位置</h3><p><img src="/../img/DaiMaSuiXiang_1/34.png" srcset="/img/loading.gif" lazyload><br>思路：通过两个二分法分别找出左右两个边界。<br>错误和分析：我将数组从中间分成两半，然后这个中间值作为左右两个边界了，应该是先用二分法找出第一个出现的目标值，然后再根据找哪个边界值然后才进行下一个二分法。虽然我的想法是这个的，但是我的代码还是先是将中间值作为了边界值<br>新知识：&gt;&gt;1右移运算符，将二进制位数向右移动一位，相当于整数除法除以2<br>middle &#x3D; left+((right - letf) &gt;&gt; 1)  等于 middle&#x3D;（left+right)&#x2F;2</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int searchLeftBorder(int *nums, int numsSize, int target) &#123;<br>    int left = 0, right = numsSize - 1;<br>    // 记录leftBorder没有被赋值的情况<br>    int leftBorder = -1;<br>    // 边界为[left, right]<br>    while (left &lt;= right) &#123;<br>        // 更新middle值，等同于middle = (left + right) / 2<br>        int middle = left + ((right - left) &gt;&gt; 1);<br>        // 若当前middle所指为target，将左边界设为middle，并向左继续寻找左边界<br>        if (nums[middle] == target) &#123;<br>            leftBorder = middle;<br>            right = middle - 1;<br>        &#125; else if (nums[middle] &gt; target) &#123;<br>            right = middle - 1;<br>        &#125; else &#123;<br>            left = middle + 1;<br>        &#125;<br>    &#125;<br>    return leftBorder;<br>&#125;<br>int searchRightBorder(int *nums, int numsSize, int target) &#123;<br>    int left = 0, right = numsSize - 1;<br>    // 记录rightBorder没有被赋值的情况<br>    int rightBorder = -1;<br>    while (left &lt;= right) &#123;<br>        int middle = left + ((right - left) &gt;&gt; 1);<br>        // 若当前middle所指为target，将右边界设为middle，并向右继续寻找右边界<br>        if (nums[middle] == target) &#123;<br>            rightBorder = middle;<br>            left = middle + 1;<br>        &#125; else if (nums[middle] &gt; target) &#123;<br>            right = middle - 1;<br>        &#125; else &#123;<br>            left = middle + 1;<br>        &#125;<br>    &#125;<br>    return rightBorder;<br>&#125;<br> <br>int* searchRange(int* nums, int numsSize, int target, int* returnSize)&#123;<br>    int leftBorder = searchLeftBorder(nums, numsSize, target);<br>    int rightBorder = searchRightBorder(nums, numsSize, target);<br> <br>    // 定义返回数组及数组大小<br>    *returnSize = 2;<br>    int *resNums = (int*)malloc(sizeof(int) * 2);<br>    resNums[0] = leftBorder;<br>    resNums[1] = rightBorder;<br>    return resNums;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="35搜索插入位置"><a href="#35搜索插入位置" class="headerlink" title="35搜索插入位置"></a>35搜索插入位置</h3><p><img src="/../img/DaiMaSuiXiang_1/35.png" srcset="/img/loading.gif" lazyload><br>左闭右闭</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int searchInsert(int* nums, int numsSize, int target) &#123;<br>    int left = 0;<br>    int right = numsSize - 1;<br>    int  middle;<br>    while(left &lt;= right)&#123;<br>        middle = (left + right)/2;<br>        if(nums[middle] &lt; target )<br>            left = middle + 1;<br>        else if(nums[middle] &gt; target)<br>            right = middle - 1;<br>        else <br>            return middle;<br>    &#125;<br>    return right + 1;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>左闭右开</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int searchInsert(int* nums, int numsSize, int target) &#123;<br>    int left = 0;<br>    int right = numsSize;<br>    int  middle;<br>    while(left &lt; right)&#123;<br>        middle = (left + right)/2;<br>        if(nums[middle] &lt; target )<br>            left = middle + 1;<br>        else if(nums[middle] &gt; target)<br>            right = middle;<br>        else <br>            return middle;<br>    &#125;<br>    return right;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27.移除元素"></a>27.移除元素</h3><p><img src="/../img/DaiMaSuiXiang_1/27.png" srcset="/img/loading.gif" lazyload><br>暴力解法</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int removeElement(int* nums, int numsSize, int val) &#123;<br>    for(int i = 0;i &lt; numsSize; i++)&#123;<br>        if(nums[i] == val)<br>        &#123;<br>            for(int j = i + 1; j &lt; numsSize; j++ )<br>                nums[j - 1] = nums[j];<br>            i--;<br>            numsSize--; <br>        &#125;<br>    &#125;<br>    return numsSize;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>双指针</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int removeElement(int* nums, int numsSize, int val) &#123;<br>    int slow = 0; <br>    for(int fast = 0; fast &lt; numsSize; fast++)&#123;<br>        if(nums[fast] != val)<br>            nums[slow++] = nums[fast];<br>    &#125;<br>    return slow;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结<br>数组理论知识：数组在内存上是连续的，不可以通过删除移除元素，只可以通过覆盖元素<br>双指针：慢指针是指向数组位置，快指针是指向数值，将原来的数组当作空白的数组，只要不是删除值，那么就将它复制数组中</p>
+<h2 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h2><h3 id="977-有序数组的平方"><a href="#977-有序数组的平方" class="headerlink" title="977.有序数组的平方"></a>977.有序数组的平方</h3><p><img src="/../img/DaiMaSuiXiang_1/997.png" srcset="/img/loading.gif" lazyload><br>暴力解法（插入排序）</p>
+<figure class="highlight plaintext"><figcaption><span>[c]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bush">void square(int* nums, int numsSize)&#123;<br>    for(int i = 0; i &lt; numsSize; i++)<br>        nums[i]*=nums[i];<br>&#125;<br>void insertSort(int* nums, int numsSize)&#123;<br>    int i;<br>    int p;<br>    int temp;<br>    for(i = 1; i &lt; numsSize; i++)&#123;<br>        temp = nums[i];<br>        for(p = i;p &gt; 0 &amp;&amp; nums[p-1] &gt; temp; p--)<br>            nums[p] = nums[p-1];<br>        nums[p] = temp;<br>    <br>    &#125;<br>&#125;<br>int* sortedSquares(int* nums, int numsSize, int* returnSize) &#123;<br>    square(nums, numsSize);<br>    insertSort(nums, numsSize);<br>    *returnSize = numsSize;<br>    int* ans=(int*)malloc(sizeof(int)*numsSize);<br>    for(int i = 0; i &lt; numsSize; i++)<br>        ans[i] = nums[i];<br>    return ans;<br> <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>双指针</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs [c]">/**<br> * Note: The returned array must be malloced, assume caller calls free().<br> */<br>int* sortedSquares(int* nums, int numsSize, int* returnSize) &#123;<br>    *returnSize = numsSize;<br>    int left = 0;<br>    int right = numsSize - 1;<br>    int*ans = (int*)malloc(sizeof(int)*numsSize);<br>    int index;<br>    for( index = numsSize-1; index &gt;= 0; index--)&#123;<br>        int lsquare = nums[left]*nums[left];<br>        int rsquare =  nums[right]*nums[right];<br>        if(lsquare &gt; rsquare)<br>        &#123;<br>            ans[index] = lsquare;<br>            left++;<br>        &#125;<br>        else<br>        &#123;<br>            ans[index] = rsquare;<br>            right--;<br>        &#125;<br>        <br>    &#125;<br>    return ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结：如何使用双指针是看题目的需求，这道题用双指针的思路和归并排序的思路相类似。</p>
+<h3 id="209-长度最小数组"><a href="#209-长度最小数组" class="headerlink" title="209.长度最小数组"></a>209.长度最小数组</h3><p><img src="/../img/DaiMaSuiXiang_1/209.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int minSubArrayLen(int target, int* nums, int numsSize) &#123;<br>    int minlength =  INT_MAX;<br>    int sum = 0;<br>    int left = 0;<br>    int right = 0;<br>    for(; right &lt; numsSize; right++)&#123;<br>        sum+=nums[right];<br>        while(sum &gt;= target)<br>        &#123;<br>            int SubLength = right - left + 1;<br>            minlength=minlength &lt; SubLength ? minlength: SubLength;<br>            sum-= nums[left++];<br>        &#125;<br>    &#125;<br>    return minlength == INT_MAX ? 0 : minlength;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我的错误：想将所有的长度放在一个数组里，然后再进行比较，而且没有完全将所有的可能考虑到。对c语言还不是很熟练<br>总结：滑动窗口中，要考虑滑动窗口是如何移动的。看到最大值，可以使用动态变化，可以使用三元表示法，最值初始化时，可以使用头文件带的最值。</p>
+<h3 id="59-螺旋矩阵II"><a href="#59-螺旋矩阵II" class="headerlink" title="59.螺旋矩阵II"></a>59.螺旋矩阵II</h3><p><img src="/../img/DaiMaSuiXiang_1/59.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int** generateMatrix(int n, int* returnSize, int** returnColumnSizes)&#123;<br>    //初始化返回的结果数组的大小<br>    *returnSize = n;<br>    *returnColumnSizes = (int*)malloc(sizeof(int) * n);<br>    //初始化返回结果数组ans<br>    int** ans = (int**)malloc(sizeof(int*) * n);<br>    int i;<br>    for(i = 0; i &lt; n; i++) &#123;<br>        ans[i] = (int*)malloc(sizeof(int) * n);<br>        (*returnColumnSizes)[i] = n;<br>    &#125;<br> <br>    //设置每次循环的起始位置<br>    int startX = 0;<br>    int startY = 0;<br>    //设置二维数组的中间值，若n为奇数。需要最后在中间填入数字<br>    int mid = n / 2;<br>    //循环圈数<br>    int loop = n / 2;<br>    //偏移数<br>    int offset = 1;<br>    //当前要添加的元素<br>    int count = 1;<br> <br>    while(loop) &#123;<br>        int i = startX;<br>        int j = startY;<br>        //模拟上侧从左到右<br>        for(; j &lt;   n - offset; j++) &#123;<br>            ans[startX][j] = count++;<br>        &#125;<br>        //模拟右侧从上到下<br>        for(; i &lt;  n - offset; i++) &#123;<br>            ans[i][j] = count++;<br>        &#125;<br>        //模拟下侧从右到左<br>        for(; j &gt; startY; j--) &#123;<br>            ans[i][j] = count++;<br>        &#125;<br>        //模拟左侧从下到上<br>        for(; i &gt; startX; i--) &#123;<br>            ans[i][j] = count++;<br>        &#125;<br>        //偏移值每次加2<br>        offset+=1;<br>        //遍历起始位置每次+1<br>        startX++;<br>        startY++;<br>        loop--;<br>    &#125;<br>    //若n为奇数需要单独给矩阵中间赋值<br>    if(n%2)<br>        ans[mid][mid] = count;<br> <br>    return ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结：螺旋矩阵最重要的就是区间的选择。</p>
+<h2 id="数组总结"><a href="#数组总结" class="headerlink" title="数组总结"></a>数组总结</h2><p>理论<br>数组的内存是连续的，想要得到连续的数组，就不可以直接删除其中的元素<br>二维数组的初始化</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs [c]">int** ans = (int**)malloc(sizeof(int*) * n);<br>    int i;<br>    for(i = 0; i &lt; n; i++) &#123;<br>    ans[i] = (int*)malloc(sizeof(int) * n);<br></code></pre></td></tr></table></figure>
+
+<p>解题方法：<br>二分法：根据是否满足题目的条件来缩小答案所在的区间，这个就是二分的本质。<br>做好区间的选择<br>双指针：要根据题目的条件来确定快慢指针的位置，循环的条件</p>
+<h2 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h2><h3 id="203-移除链表元素"><a href="#203-移除链表元素" class="headerlink" title="203.移除链表元素"></a>203.移除链表元素</h3><p>！<a href="../img/DaiMaSuiXiang_1/203"></a><br>有哑结点</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs [c]">struct ListNode* removeElements(struct ListNode* head, int val) &#123;<br>    typedef struct ListNode ListNode;<br>    ListNode *shead;<br>    shead = (ListNode*)malloc(sizeof(ListNode));<br>    shead-&gt;next = head;<br>    ListNode *cur = shead;<br>    while(cur-&gt;next != NULL)<br>&#123;<br>        if(cur-&gt;next-&gt;val == val)<br>            &#123;<br>                ListNode *temp = cur-&gt;next;<br>                cur-&gt;next = cur-&gt;next-&gt;next;<br>                free(temp);<br>&#125;<br>           else<br>&#123;<br>                cur = cur-&gt;next;<br>&#125;<br><br>    &#125;<br>    head = shead-&gt;next;<br>    return head;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>无哑结点</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs [c]">struct ListNode* removeElements(struct ListNode* head, int val) &#123;<br>    struct ListNode* temp;<br>    while(head &amp;&amp; head-&gt;val == val)<br>&#123;<br>        temp = head;<br>        head = head-&gt;next;<br>        free(temp);<br>&#125;<br>       struct ListNode* cur = head;<br>    while(cur &amp;&amp; (temp = cur-&gt;next))<br>&#123;<br>    if(temp -&gt;val == val)<br>&#123;<br>        cur-&gt;next = temp-&gt;next;<br>        free(temp);<br>&#125;<br>    else<br>    cur = cur-&gt;next;<br><br>    &#125;<br>    return head;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>总结：有无哑结点的，就是对头节点如何操作的问题。</p>
+<h3 id="707-设计链表"><a href="#707-设计链表" class="headerlink" title="707.设计链表"></a>707.设计链表</h3><p><img src="/../img/DaiMaSuiXiang_1/707" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><code class="hljs [c]">typedef struct &#123;<br>    int val;<br>    struct MyLinkedList* next;<br>&#125; MyLinkedList;<br><br>MyLinkedList* myLinkedListCreate() &#123;<br>    MyLinkedList* head = (MyLinkedList *)malloc(sizeof (MyLinkedList));<br>    head-&gt;next = NULL;<br>    return head;<br>&#125;<br><br>int myLinkedListGet(MyLinkedList* obj, int index) &#123;<br>    MyLinkedList *cur = obj-&gt;next;<br>    for (int i = 0; cur != NULL; i++)&#123;<br>        if (i == index)&#123;<br>            return cur-&gt;val;<br>&#125;<br>            else&#123;<br>                cur = cur-&gt;next;<br>&#125;<br>&#125;<br>        return -1;<br>&#125;<br><br>void myLinkedListAddAtHead(MyLinkedList* obj, int val) &#123;<br>    MyLinkedList* nhead = (MyLinkedList*)malloc(sizeof(MyLinkedList));<br>        nhead-&gt;val = val;<br>    nhead-&gt;next = obj-&gt;next;<br>    obj-&gt;next = nhead;<br>&#125;<br>void myLinkedListAddAtTail(MyLinkedList* obj, int val) &#123;<br>    MyLinkedList *cur = obj;<br>    while(cur-&gt;next != NULL)&#123;<br>    cur = cur-&gt;next;<br>&#125;<br>MyLinkedList *ntail = (MyLinkedList *)malloc(sizeof (MyLinkedList));<br>    ntail-&gt;val = val;<br>    ntail-&gt;next = NULL;<br>    cur-&gt;next = ntail;<br>&#125;<br><br>void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) &#123;<br>if (index == 0)&#123;<br>myLinkedListAddAtHead(obj, val);<br>return;<br>&#125;<br>MyLinkedList *cur = obj-&gt;next;<br>for(int count = 1; cur != NULL;count++)&#123;<br>    if(count == index)<br>&#123;<br>        MyLinkedList* new =(MyLinkedList*)malloc(sizeof(MyLinkedList));<br>        new-&gt;val = val;<br>        new-&gt;next = cur-&gt;next;<br>        cur-&gt;next = new;<br>        return;<br>&#125;<br>        else<br>            cur = cur-&gt;next;<br>    &#125;<br>&#125;<br><br>void myLinkedListDeleteAtIndex(MyLinkedList* obj, int index) &#123;<br>    if (index == 0)&#123;<br>        MyLinkedList *tmp = obj-&gt;next;<br>    <br>    if (tmp != NULL)&#123;<br>        obj-&gt;next = tmp-&gt;next;<br>        free(tmp);<br>    &#125;<br>    return;<br>&#125;<br>MyLinkedList *cur = obj-&gt;next;<br>    for (int i = 1 ;cur != NULL &amp;&amp; cur-&gt;next != NULL; i++)&#123;<br>        if (i == index)&#123;<br>            MyLinkedList *tmp = cur-&gt;next;<br>        if (tmp != NULL) &#123;<br>            cur-&gt;next = tmp-&gt;next;<br>        free(tmp);<br>&#125;<br>        return;<br>&#125;<br>e       lse&#123;<br>        cur = cur-&gt;next;<br>&#125;<br>&#125;<br><br>&#125;<br><br>void myLinkedListFree(MyLinkedList* obj) &#123;<br><br>    while(obj != NULL)<br>    &#123;<br>        MyLinkedList *tmp = obj;<br>        obj = obj-&gt;next;<br>        free(tmp);<br> <br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="206反转链表"><a href="#206反转链表" class="headerlink" title="206反转链表"></a>206反转链表</h3><p><img src="/../img/DaiMaSuiXiang_1/206" srcset="/img/loading.gif" lazyload><br>双指针</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">struct ListNode* reverseList(struct ListNode* head) &#123;<br>    struct ListNode* cur = head;<br>    struct ListNode* pre = NULL;<br>    while(cur)&#123;<br>    struct ListNode* temp;<br>    temp = cur-&gt;next;<br>    cur-&gt;next = pre;<br>    pre = cur;<br>    cur = temp;<br>&#125;<br>    return pre;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>递归</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs [c]">struct ListNode*reverse(struct ListNode* cur,struct ListNode* pre )&#123;<br><br>    if(!cur)<br>        return pre;<br>    struct ListNode* temp = cur-&gt;next;<br>    cur-&gt;next = pre;<br>    return reverse(temp,cur);<br><br>&#125;<br>    struct ListNode* reverseList(struct ListNode* head) &#123;<br>    return reverse(head,NULL);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="day04"><a href="#day04" class="headerlink" title="day04"></a>day04</h2><h2 id="24-两两交换链表中的节点"><a href="#24-两两交换链表中的节点" class="headerlink" title="24. 两两交换链表中的节点"></a>24. 两两交换链表中的节点</h2><p><img src="/../img/DaiMaSuiXiang_1/24.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs [c]">struct ListNode* swapPairs(struct ListNode* head) &#123;<br>    typedef struct ListNode ListNode;<br>    ListNode *fakehead = (ListNode*)malloc(sizeof(ListNode));<br>    fakehead-&gt;next = head;<br>    ListNode* left = fakehead;<br>    ListNode* right = fakehead-&gt;next;<br>    while(left &amp;&amp; right &amp;&amp; right-&gt;next)<br>    &#123;<br>        left-&gt;next = right-&gt;next;<br>        right-&gt;next = left-&gt;next-&gt;next;<br>        left-&gt;next-&gt;next = right; <br>        left = right;<br>        right = left-&gt;next; <br>    &#125;<br>    return fakehead-&gt;next;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="19-删除链表的倒数第N个节点"><a href="#19-删除链表的倒数第N个节点" class="headerlink" title="19.删除链表的倒数第N个节点"></a>19.删除链表的倒数第N个节点</h3><p><img src="/../img/DaiMaSuiXiang_1/19.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs [c]">/**<br> * Definition for singly-linked list.<br> * struct ListNode &#123;<br> *     int val;<br> *     struct ListNode *next;<br> * &#125;;<br> */<br>struct ListNode* removeNthFromEnd(struct ListNode* head, int n) &#123;<br>    typedef  struct ListNode ListNode;<br>    ListNode* fakehead=(ListNode*)malloc(sizeof(ListNode));<br>    fakehead-&gt;next = head;<br>    ListNode* fast = fakehead;<br>    ListNode* slow = fakehead;<br>    int count = 0;<br>    for(;count &lt; n+1; count++)&#123;<br>        fast = fast-&gt;next;<br>    &#125;<br>    while(fast)&#123;<br>        fast = fast-&gt;next;<br>        slow = slow-&gt;next;<br>    &#125;<br>    ListNode* temp;<br>    temp = slow-&gt;next;<br>    slow -&gt;next = slow-&gt;next-&gt;next;<br>    free(temp);<br>    return fakehead-&gt;next;<br> <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a>面试题 02.07. 链表相交</h3><p><img src="/../img/DaiMaSuiXiang_1/02.07.png" srcset="/img/loading.gif" lazyload></p>
+<p>思考：</p>
+<p>为什么要对齐链表长度后才进行比较,相差的那一段为什么不会有相同的</p>
+<p>——因为他们有一段共同的长度，所以说，他们相差的那一段中不可能有相同的元素。</p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs [c]">ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) &#123;<br>    ListNode *l = NULL, *s = NULL;<br>    int lenA = 0, lenB = 0, gap = 0;<br>    // 求出两个链表的长度<br>    s = headA;<br>    while (s) &#123;<br>        lenA ++;<br>        s = s-&gt;next;<br>    &#125;<br>    s = headB;<br>    while (s) &#123;<br>        lenB ++;<br>        s = s-&gt;next;<br>    &#125;<br><br>    // 求出两个链表长度差<br>    if (lenA &gt; lenB) &#123;<br>        l = headA, s = headB;<br>        gap = lenA - lenB;<br>    &#125; else &#123;<br>        l = headB, s = headA;<br>        gap = lenB - lenA;<br>    &#125;<br><br>    // 尾部对齐<br>    while (gap--) l = l-&gt;next;<br>    // 移动，并检查是否有相同的元素<br>    while (l) &#123;<br>        if (l == s) return l;<br>        l = l-&gt;next, s = s-&gt;next;<br>    &#125;<br><br>    return NULL;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="142-环形链表II"><a href="#142-环形链表II" class="headerlink" title="142.环形链表II"></a>142.环形链表II</h3><p><img src="/../img/DaiMaSuiXiang_1/142.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs [c]">ListNode *detectCycle(ListNode *head) &#123;<br>    ListNode *fast = head, *slow = head;<br>    while (fast &amp;&amp; fast-&gt;next) &#123;<br>        // 这里判断两个指针是否相等，所以移位操作放在前面<br>        slow = slow-&gt;next;<br>        fast = fast-&gt;next-&gt;next;<br>        if (slow == fast) &#123; // 相交，开始找环形入口：分别从头部和从交点出发，找到相遇的点就是环形入口<br>            ListNode *f = fast, *h = head;<br>            while (f != h) f = f-&gt;next, h = h-&gt;next;<br>            return h;<br>        &#125;<br>    &#125;<br>    return NULL;<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c/" class="category-chain-item">c</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/c/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/c/" class="print-no-link">#c</a>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>代码随想录一刷</div>
+      <div>http://example.com/2024/09/16/DaiMaSuiXiang-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>X-994</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/15/MingJieC-exerices/" title="明解C语言课后练习">
+                        <span class="hidden-mobile">明解C语言课后练习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"YhmdYh8xooZMmP5AVRg8vq7k-MdYXbMMI","appKey":"s4Nu6SbkKXU7Mjoi3H1Xov8u","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://yhmdyh8x.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
