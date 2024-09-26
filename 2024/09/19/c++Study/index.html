@@ -27,7 +27,7 @@
 <meta property="og:description" content="b站黑马程序员上课笔记，由于前面基础语法部分和c差不多，所以就没有记录了">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-19T10:49:03.000Z">
-<meta property="article:modified_time" content="2024-09-26T01:47:03.902Z">
+<meta property="article:modified_time" content="2024-09-26T07:32:21.211Z">
 <meta property="article:author" content="X-994">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary_large_image">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k 字
+          11k 字
         
       </span>
     
@@ -616,6 +616,75 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="纯虚函数和抽象类"><a href="#纯虚函数和抽象类" class="headerlink" title="纯虚函数和抽象类"></a>纯虚函数和抽象类</h3><p>在多态中，通常父类中虚函数的实现是毫无意义的，主要都是调用子类重写的内容<br>因此可以将虚函数改为纯虚函数<br><strong>语法</strong>：virtual 返回值类型 函数名 (参数列表) &#x3D; 0;<br>当类中有了纯虚函数，这个类也成为抽象类<br>抽象类特点：</p>
+<ul>
+<li>无法实例化对象</li>
+<li>子类必须重写抽象类中的纯虚函数，否则也属于抽象类<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">class Base&#123;<br>  virtual void func() = 0;<br>  &#125;;<br>  class Son:public Base&#123;<br>  public:<br>      void func()&#123;<br>          cout &lt;&lt; &quot;Son func&quot; &lt;&lt; endl;<br>          &#125;<br>  &#125;;<br>  <br>  void test01()&#123;<br>    //Base b; 抽象类无法实例化对象<br>    Son s;// 如果没有重写父类的纯虚函数，则该子类也为抽象类<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="虚析构和纯析构"><a href="#虚析构和纯析构" class="headerlink" title="虚析构和纯析构"></a>虚析构和纯析构</h3><p>多态使用时，如果子类中有属性开辟到堆区，那么父类指针在释放时无法调用到子类的析构代码<br><strong>解决方式</strong>：将父类中的析构函数改为虚析构或者纯虚析构<br><strong>虚析构和纯虚析构共性</strong>:</p>
+<ul>
+<li>可以解决父类指针释放子类对象的问题</li>
+<li>都需要有具体的函数实现<br><strong>虚析构和纯虚析构区别</strong>：</li>
+<li>如果是纯虚析构，该类属于抽象类，无法实例化对象<br><strong>虚析构语法:</strong> virtual <del>类名(){}<br><strong>纯虚析构语法：</strong><br>virtual ~类名()&#x3D;0; 类外：类名::</del>类名(){}<br><strong>注意事项</strong>:需要声明，也需要具体的实现代码(在类外实现)，有了纯虚析构函数之后，这个类也属于抽象类，无法实例化对象<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">class Animal&#123;<br>public:<br>   Animal()&#123;<br>      cout &lt;&lt; &quot;Animal构造函数&quot; &lt;&lt; endl;<br>    &#125;<br>    ////利用虚析构可以解决父类指针释放子类对象时不干净的问题<br>   virtual ~Animal()&#123; <br>      cout&lt;&lt;&quot;Animal析构函数&quot; &lt;&lt; endl;<br>    &#125;<br>    //纯虚析构函数<br>    virtual ~Animal() = 0;<br>    virtual void speak() = 0;<br>&#125;;<br>Animal::~Animal()&#123;<br>  cout &lt;&lt; &quot;Animal纯虚析构&quot; &lt;&lt; endl;<br>  &#125;;<br>  <br>class Cat: public Animal&#123;<br>public:  <br>    virtual void speak()&#123;<br>            cout &lt;&lt; *m_Name &lt;&lt; &quot;cat&quot;&lt;&lt; ednl;<br>      &#125;<br>      Cat(string name)&#123;<br>        cout &lt;&lt; &quot;构造&quot; &lt;&lt; ednl;<br>        m_Name = new string(name);<br>      &#125;;<br>      ~Cat()&#123;<br>          if(m_Name != NULL) &#123;<br>            cout &lt;&lt; &quot;析构函数&quot; &lt;&lt;endl;<br>            delete m_Name;<br>            m_Name = NULL;<br>            &#125;<br>      &#125;<br>      string *m_Name;<br>&#125;;<br><br>void test01()&#123;<br>      Animal *animal new Cat(&quot;Tom&quot;);<br>      animal-&gt;speak();<br>      //父类指针在析构时候不会调用析构函数，导致子类如果有堆区属性，会出现内存泄漏<br></code></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p><strong>总结</strong><br>虚析构或纯虚析构就是用来解决通过父类指针释放的子类对象<br>如果子类中没有堆区数据，可以不写虚析构或纯虚析构函数<br>拥有纯虚析构函数的类也属于抽象类</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><p>程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放</p>
+<p>通过文件可以将数据持久化</p>
+<p>C++中对文件操作需要包含头文件****</p>
+<p>文件类型分为两种：</p>
+<ul>
+<li>文本文件 - 文件以文本的ASCII码形式存储在计算机中</li>
+<li>二进制文件 - 文件以文本的二进制形式存储在计算机中，用户一般不能直接读懂它们<br>操作文件的三大类：</li>
+<li>ofstream：写操作</li>
+<li>ifstream：读操作</li>
+<li>fstream：读写操作</li>
+</ul>
+<h2 id="文本文件"><a href="#文本文件" class="headerlink" title="文本文件"></a>文本文件</h2><h3 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h3><p>写文件步骤如下： </p>
+<ol>
+<li>包含头文件 <figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">#include &lt;fstream&gt;<br></code></pre></td></tr></table></figure></li>
+<li>创建流对象<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">ofstream ofs;<br></code></pre></td></tr></table></figure></li>
+<li>打开文件<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">ofs.open(&quot;文件路径&quot;，打开方式);<br></code></pre></td></tr></table></figure></li>
+<li>写数据<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">ofs &lt;&lt; &quot;写入数据&quot;; <br></code></pre></td></tr></table></figure></li>
+<li>关闭文件<figure class="highlight plaintext"><figcaption><span>bush</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs [c++]">ofs.close();<br></code></pre></td></tr></table></figure>
+<strong>文件打开方式</strong>：<table>
+<thead>
+<tr>
+<th>打开方式</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ios::in</td>
+<td>为读文件而打开文件</td>
+</tr>
+<tr>
+<td>ios::out</td>
+<td>为写文件而打开文件</td>
+</tr>
+<tr>
+<td>ios::ate</td>
+<td>初始位置：文件尾</td>
+</tr>
+<tr>
+<td>ios::app</td>
+<td>追加方式写文件</td>
+</tr>
+<tr>
+<td>ios::trunc</td>
+<td>如果文件存在先删除，再创建</td>
+</tr>
+<tr>
+<td>ios::binary</td>
+<td>二进制方式</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
 
                 
               </div>
