@@ -21,23 +21,28 @@
   
     <meta name="description" content="这是我在中国MOOC大学里面中电子科技大学学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机操作系统的学习">
+<meta property="og:title" content="计算机操作系统">
 <meta property="og:url" content="http://example.com/2024/10/08/os/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="这是我在中国MOOC大学里面中电子科技大学学习笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/os/os.png">
+<meta property="og:image" content="http://example.com/img/os/simpleComputer.png">
+<meta property="og:image" content="http://example.com/img/os/functional.png">
 <meta property="og:image" content="http://example.com/img/os/bingfa.png">
 <meta property="og:image" content="http://example.com/img/os/2zhuangtaizhuan.png">
+<meta property="og:image" content="http://example.com/img/os/7zhuangtai.png">
+<meta property="og:image" content="http://example.com/img/os/diaodu.png">
 <meta property="article:published_time" content="2024-10-08T12:16:18.000Z">
-<meta property="article:modified_time" content="2024-10-09T13:09:28.525Z">
+<meta property="article:modified_time" content="2024-10-10T13:26:12.392Z">
 <meta property="article:author" content="X-994">
 <meta property="article:tag" content="四大件">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/os/bingfa.png">
+<meta name="twitter:image" content="http://example.com/img/os/os.png">
   
   
   
-  <title>计算机操作系统的学习 - Blog</title>
+  <title>计算机操作系统 - Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计算机操作系统的学习"></span>
+            <span id="subtitle" data-typed-text="计算机操作系统"></span>
           
         </div>
 
@@ -232,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          4.7k 字
         
       </span>
     
@@ -271,12 +276,81 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">计算机操作系统的学习</h1>
+            <h1 id="seo-header">计算机操作系统</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><h2 id="进程的描述与控制"><a href="#进程的描述与控制" class="headerlink" title="进程的描述与控制"></a>进程的描述与控制</h2><h3 id="程序的执行顺序与并发执行"><a href="#程序的执行顺序与并发执行" class="headerlink" title="程序的执行顺序与并发执行"></a>程序的执行顺序与并发执行</h3><p>程序的执行顺序：</p>
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>框架图<br><img src="/../img/os/os.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="解释什么是操作系统"><a href="#解释什么是操作系统" class="headerlink" title="解释什么是操作系统"></a>解释什么是操作系统</h2><p>计算机简易构图<br><img src="/../img/os/simpleComputer.png" srcset="/img/loading.gif" lazyload><br>操作系统是运用在硬件上的一层软件<br>工具使得操作系统更加完善<br><strong>四种观点</strong></p>
+<ul>
+<li>从外部看os<ul>
+<li>用户使用环境：计算机用户使用计算机系统的接口，为计算机用户提供了方便的工作环境</li>
+<li>虚拟机的观点：os是建立在计算机硬件平台上的虚拟机器，提供了许多硬件更强或者没有的功能</li>
+</ul>
+</li>
+<li>从内部看os<ul>
+<li>资源管理观点:os是计算机系统中各类资源的管理者，负责分配，回收以及控制系统中的软硬件资源</li>
+<li>作业组织观点：os是计算机系统流程的组织者，协调各个应用软件的运行次序</li>
+</ul>
+</li>
+</ul>
+<p>软件工程的特点：需求分析-&gt;系统设计-&gt;编码实现-&gt;产品升级<br>软件系统需求：</p>
+<ul>
+<li>软件系统能提供的服务</li>
+<li>软件系统在提供这些服务，需要满足的限制条件</li>
+<li>软件系统具有适应某些变化的能力</li>
+</ul>
+<p>第一个需求是后两个系统需求存在的基础，称为软件功能性需求，后两个是系统的非功能性需求</p>
+<h2 id="os系统功能性需求"><a href="#os系统功能性需求" class="headerlink" title="os系统功能性需求"></a>os系统功能性需求</h2><ul>
+<li>计算机用户需要用户命令：所有用户命令所构成的集合常被称为os的用户接口或者叫命令接口</li>
+<li>应用软件需要系统调用：系统调用所构成的集合被称为程序接口或应用程序接口（API)</li>
+</ul>
+<p><img src="/../img/os/functional.png" srcset="/img/loading.gif" lazyload><br>用户命令：指计算机用户要求计算机系统为其工作的指示<br>命令表示形式：</p>
+<ul>
+<li>字符形式</li>
+<li>菜单形式</li>
+<li>图形形式</li>
+</ul>
+<p>命令使用方式：</p>
+<ul>
+<li>脱机使用：不受该系统的控制</li>
+<li>联机使用</li>
+</ul>
+<h3 id="os系统非功能性需求"><a href="#os系统非功能性需求" class="headerlink" title="os系统非功能性需求"></a>os系统非功能性需求</h3><ul>
+<li>性能和效率<br>吞吐量：单位时间内完成的工作量<br>响应时间<br>分时系统用户数的支持量</li>
+<li>公平性</li>
+<li>可靠性</li>
+<li>安全性</li>
+<li>可伸缩性</li>
+<li>可扩展性</li>
+<li>可移植性</li>
+</ul>
+<h2 id="重要的基本概念"><a href="#重要的基本概念" class="headerlink" title="重要的基本概念"></a>重要的基本概念</h2><h4 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h4><p><strong>概念</strong>：计算机用户在一次上机过程中要求计算机系统为其所做工作的集合；作业中每项相对独立的工作称为作业步<br><strong>基本类型</strong></p>
+<ul>
+<li>脱机作业： 计算机用户不能在此类作业被计算机系统处理时改变已定义好的作业步（交互性差）</li>
+<li>联机作业： 计算机用户可以在此类作业被计算机系统处理时随时改变其作业步</li>
+</ul>
+<h4 id="线序和进程"><a href="#线序和进程" class="headerlink" title="线序和进程"></a>线序和进程</h4><p><strong>概念</strong></p>
+<ul>
+<li>线程：程序的一次相对独立的运行过程；线程是系统调度的最小单位</li>
+<li>进程：系统分配资源的基本对象，系统中拥有资源的最小实体</li>
+</ul>
+<p>线程归属于某些进程，线程是可以使用进程里面的资源，调度是看线程的调度</p>
+<h4 id="虚拟存储和文件"><a href="#虚拟存储和文件" class="headerlink" title="虚拟存储和文件"></a>虚拟存储和文件</h4><p>概念：</p>
+<ul>
+<li>虚拟存储：进程的逻辑地址空间，os对计算机系统中多级物理存储体系进行高度抽象的结果<br>虚拟存储可以将实际空间虚拟扩大，就是将外存一部分虚拟成内存使用</li>
+<li>文件：命了名的字节流，对计算机系统中种类繁多的外部设备进行高度抽象的结果</li>
+</ul>
+<p>道：指运行在系统里面的进程数量和进程<br>批处理：有一批作业等待进去内存</p>
+<h4 id="单批道处理系统"><a href="#单批道处理系统" class="headerlink" title="单批道处理系统"></a>单批道处理系统</h4><p><strong>描述</strong>：内存里面始终只有一道程序驻留在里面，占用了处理器，占用现在计算机资源<br>处理器必须等待I&#x2F;O指令才能往前推进<br><strong>特点</strong>：效率低</p>
+<h4 id="多批道处理系统"><a href="#多批道处理系统" class="headerlink" title="多批道处理系统"></a>多批道处理系统</h4><p>描述：一个系统允许多道程序同时准备运行，当正在运行的那道程序因为某种原因暂时停止运行，系统将自动启动另外一道程序运行，一旦原因消除时，它在将在某个时候重启继续运行<br>允许多道程序同时准备运行实际上指内存还要排队</p>
+<h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><p>同步是操作系统里面是协调，保证一个等待I&#x2F;O进程能收到信号</p>
+<h4 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h4><p>有些资源是互斥资源，不能让两个进程或者两个任务同时运行这个资源<br>比如买飞机票，没有互斥机制，可能会出现一张票属于多个人<br>进程之间互相干扰，可能会对结果有影响</p>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>一个重要引起原因是竞争资源，各个进程都在抢资源，无法继续运行</p>
+<h4 id="分时系统"><a href="#分时系统" class="headerlink" title="分时系统"></a>分时系统</h4><p>是一个多道系统，在系统内部的内存空间里面是存在多道任务的，增加了每个任务的时间上的限制，非常合适交互系统，时间到了，需要中断进程，消耗资源，<br>作业在系统里面排队，排队以后按照分时的机制来实现服务</p>
+<h4 id="多道和分时系统之间比较"><a href="#多道和分时系统之间比较" class="headerlink" title="多道和分时系统之间比较"></a>多道和分时系统之间比较</h4><p>多道批处理系统：处理器的利用效率高，需要作业语言控制相应的命令<br>分时系统：响应时间短，用终端来提交响应的命令</p>
+<h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><h2 id="进程的描述与控制"><a href="#进程的描述与控制" class="headerlink" title="进程的描述与控制"></a>进程的描述与控制</h2><h3 id="程序的执行顺序与并发执行"><a href="#程序的执行顺序与并发执行" class="headerlink" title="程序的执行顺序与并发执行"></a>程序的执行顺序与并发执行</h3><p>程序的执行顺序：</p>
 <ul>
 <li>程序顺序执行：顺序性、封闭性，可再现性</li>
 <li>程序并发执行：间断性、非封闭性，不可再性</li>
@@ -334,14 +408,23 @@
 <li>操作系统挂起程序来释放空间</li>
 <li>周期性执行的工具软件</li>
 <li>交互式用户请求</li>
-<li>时钟中断<br><strong>特征：</strong></li>
+<li>时钟中断</li>
+</ul>
+<p><strong>特征：</strong></p>
+<ul>
 <li>不能立即执行</li>
 <li>可能是等待某事情发生，若是阻塞条件独立与挂起条件，即使阻塞结束，但是程序还是不能执行</li>
 <li>使之挂起的进程为：自身，其父程序，os</li>
-<li>只有挂起它的进程才能是它的由挂起状态转变为其他状态<br>挂起与阻塞的区别：</li>
+<li>只有挂起它的进程才能是它的由挂起状态转变为其他状态</li>
+</ul>
+<p><strong>挂起与阻塞的区别：</strong></p>
+<ul>
 <li>挂起是基于交换技术的，只有当数据和程序回来，才解除挂起<br>问题：</li>
 <li>是否只能挂起阻塞进程？<br>不一定，优先挂起阻塞进程，可以提高性能</li>
-<li>如何激活一个挂起程序？<br>数据和程序返回来，其实就是一个I&#x2F;O过程<br>四种状态组合</li>
+<li>如何激活一个挂起程序？<br>数据和程序返回来，其实就是一个I&#x2F;O过程</li>
+</ul>
+<p><strong>四种状态组合</strong></p>
+<ul>
 <li>就绪</li>
 <li>阻塞</li>
 <li>就绪，挂起：进程在外存，只要调入内存即可执行</li>
@@ -354,7 +437,231 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="具有挂起状态的进程转换"><a href="#具有挂起状态的进程转换" class="headerlink" title="具有挂起状态的进程转换"></a>具有挂起状态的进程转换</h3><p><strong>状态转换图</strong><br>！<a href="../img/os/7zhuangtai.png"></a><br><strong>从阻塞，挂起状态变到就绪，挂起？</strong><br>操作系统来执行这个转变，状态在PCB里面</p>
+<h3 id="具有挂起状态的进程转换"><a href="#具有挂起状态的进程转换" class="headerlink" title="具有挂起状态的进程转换"></a>具有挂起状态的进程转换</h3><p><strong>状态转换图</strong><br><img src="/../img/os/7zhuangtai.png" srcset="/img/loading.gif" lazyload><br><strong>从阻塞，挂起状态变到就绪，挂起？</strong><br>操作系统来执行这个转变，状态在PCB里面</p>
+<h3 id="操作系统如何管理进程所用的资源"><a href="#操作系统如何管理进程所用的资源" class="headerlink" title="操作系统如何管理进程所用的资源"></a>操作系统如何管理进程所用的资源</h3><p>os如何感知进程，控制进程及其所用的资源资源？<br>用表记录进程和资源的当前的状态</p>
+<ul>
+<li>内存表</li>
+<li>I&#x2F;O表</li>
+<li>文件表</li>
+<li>进程表</li>
+</ul>
+<h4 id="内存表"><a href="#内存表" class="headerlink" title="内存表"></a>内存表</h4><ul>
+<li>进程的分配情况</li>
+<li>外存分配情况</li>
+<li>访问共享内存区的保护属性</li>
+<li>管理虚拟存储需要的信息</li>
+</ul>
+<h4 id="I-O表"><a href="#I-O表" class="headerlink" title="I&#x2F;O表"></a>I&#x2F;O表</h4><ul>
+<li>设备的状态是可用还是已分配</li>
+<li>设备的操作状态信息</li>
+<li>I&#x2F;O传输时候的源和目的地</li>
+</ul>
+<h4 id="文件表"><a href="#文件表" class="headerlink" title="文件表"></a>文件表</h4><ul>
+<li>有哪些文件</li>
+<li>文件外存的位置（磁盘）</li>
+<li>文件的当前状态</li>
+<li>文件的属性</li>
+<li>文件管理系统</li>
+</ul>
+<h4 id="进程表"><a href="#进程表" class="headerlink" title="进程表"></a>进程表</h4><ul>
+<li>进程的位置（PCB,程序，数据的位置）</li>
+<li>管理进程的属性（ID,状态，内存的位置）</li>
+</ul>
+<p>内存的位置：</p>
+<ul>
+<li>一组程序（局部和全局变量，常量，堆栈）</li>
+<li>PCB（所有的进程的属性）</li>
+<li>进程映像</li>
+</ul>
+<p>进程映像：把一个进程逻辑上的所有信息合起来</p>
+<ul>
+<li>用户数据</li>
+<li>用户进程</li>
+<li>堆栈：存放系统及过程调用地地址，参数</li>
+<li>PCB:OS感知进程，控制进程的数据结构</li>
+</ul>
+<h3 id="os内核功能"><a href="#os内核功能" class="headerlink" title="os内核功能"></a>os内核功能</h3><ul>
+<li>资源管理功能<ul>
+<li>进场创建金额终止，调度，状态转换，同步和通信，管理PCB</li>
+<li>为进程分配地址空间，对换、段&#x2F;页管理</li>
+<li>缓存管理、为进程分配I&#x2F;O通道和设备</li>
+</ul>
+</li>
+<li>支撑功能<ul>
+<li>中断处理</li>
+<li>时钟管理</li>
+<li>原语的操作,不可中断</li>
+<li>统计资源的使用情况</li>
+<li>监测</li>
+</ul>
+</li>
+</ul>
+<p><strong>进程原语</strong></p>
+<ul>
+<li>进程切换</li>
+<li>创建与终止</li>
+<li>阻塞与唤醒</li>
+<li>挂起与激活</li>
+</ul>
+<h3 id="进程的切换"><a href="#进程的切换" class="headerlink" title="进程的切换"></a>进程的切换</h3><p><strong>原因：</strong></p>
+<ul>
+<li>时钟中断</li>
+<li>I.O中断</li>
+<li>存储访问失效（虚拟内存）</li>
+<li>陷阱</li>
+<li>管理程序调入<br><strong>操作过程</strong></li>
+<li>保存下上文</li>
+<li>更新PCB</li>
+<li>把PCB移到相应队列</li>
+<li>选另外一程序执行（调度）</li>
+<li>把当前选中的进程的PCB修改</li>
+<li>内存管理的数据结构要进行修改</li>
+<li>恢复被选中进程的执行现场（把PCB相应的数据读到相应的寄存器里面）</li>
+</ul>
+<p><strong>进程切换和模式切换的区别</strong><br><strong>进程切换</strong>：作用于进程之间的一种操作。当分派程序收回当前程序的CPU并准备把它分派非某个就绪进程时，该操作将被引用<br><strong>模式切换</strong>:是进程内部所引用的一种操作，当进程映像所包含的程序引用核心子系统所提供的系统调用时，该操作被引用，不涉及到进程切换<br>进程切换的时候一定涉及模式切换，但是模式切换不一定涉及到进程切换</p>
+<h3 id="进程创建与终止"><a href="#进程创建与终止" class="headerlink" title="进程创建与终止"></a>进程创建与终止</h3><h4 id="什么时候创建进程？"><a href="#什么时候创建进程？" class="headerlink" title="什么时候创建进程？"></a>什么时候创建进程？</h4><ul>
+<li>提交新的批处理</li>
+<li>用户注册</li>
+<li>提供一些服务例如像打印</li>
+<li>进程创造新的进程</li>
+</ul>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>为进程分配一个唯一标示标号ID：住进程表增加一个新的表项</li>
+<li>为进程分配空间：用户地址空间，用户栈空间，PCB空间。若共享已有空间，则建立相应的链接</li>
+<li>初始化PCB：进程标识，处理机状态信息，进程状态</li>
+<li>建立链接：若调度队列是链表，则新进程插入到就就绪或（就绪，挂起）链表</li>
+<li>建立或扩展其他数据结构</li>
+</ol>
+<h4 id="什么时候终止进程"><a href="#什么时候终止进程" class="headerlink" title="什么时候终止进程"></a>什么时候终止进程</h4><ul>
+<li>批作业遇到终止指令</li>
+<li>用户注销</li>
+<li>程序退出</li>
+<li>出现条件错误</li>
+</ul>
+<p>终止的原因：</p>
+<ul>
+<li>正常结束</li>
+<li>超时终止</li>
+<li>内存不足</li>
+<li>越界访问</li>
+<li>企图使用未允许的数据，或操作方式错</li>
+<li>计算错，如除零，或企图存储硬件允许的最大数</li>
+<li>超时等待某件事件发生</li>
+<li>文件多次重试依旧无法读写文件，或操作无效</li>
+<li>企图执行不存在的指令</li>
+<li>企图执行特权指令</li>
+<li>数据类型不符，或未初始化</li>
+</ul>
+<p>步骤：</p>
+<ol>
+<li>根据被终止进程的标识符ID，找到其PCB,读出该进程的状态</li>
+<li>若该进程为执行状态，则终止其执行，调度新的进程执行</li>
+<li>若该进程有子孙进程，则立即终止其所有子孙进程</li>
+<li>将该进程的全部资源，归还给其父进程，或归还给系统</li>
+<li>将被终止进程（的PCB）从所在的队列中移出，等待其他程序来搜集信息</li>
+</ol>
+<h3 id="进程的阻塞与唤醒、挂起与激活"><a href="#进程的阻塞与唤醒、挂起与激活" class="headerlink" title="进程的阻塞与唤醒、挂起与激活"></a>进程的阻塞与唤醒、挂起与激活</h3><h4 id="进程阻塞"><a href="#进程阻塞" class="headerlink" title="进程阻塞"></a>进程阻塞</h4><p><strong>原因</strong>：</p>
+<ul>
+<li>请求系统服务</li>
+<li>启动某种操作：如I&#x2F;O、</li>
+<li>新数据尚位到达</li>
+<li>无新工作可做</li>
+</ul>
+<h4 id="进程唤醒"><a href="#进程唤醒" class="headerlink" title="进程唤醒"></a>进程唤醒</h4><p>概念：当阻塞进程期待的事情发生后，有关进程调用唤醒原语，将等待该事情的进程唤醒。状态变为Ready，插入就绪队列。<br>当一个程序阻塞了，一定有一个时间将它唤醒，如果不唤醒，进程就永远死在那</p>
+<h4 id="挂起原语"><a href="#挂起原语" class="headerlink" title="挂起原语"></a>挂起原语</h4><p>描述：当出现挂起事件，系统利用挂起原语将指定的进程或阻塞状态进程挂起。进程从内存换到外存，状态改变</p>
+<h4 id="激活原语"><a href="#激活原语" class="headerlink" title="激活原语"></a>激活原语</h4><p>当激活事件发生后，系统利用激活原语将指定进程激活。进程从外存换入到内存，状态改变</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h4 id="线程综述"><a href="#线程综述" class="headerlink" title="线程综述"></a>线程综述</h4><p>描述：</p>
+<ul>
+<li>不再分配资源</li>
+<li>有相应的执行状态（执行，就绪，退出）</li>
+<li>中断的时候也会保存上下文</li>
+<li>有执行堆栈</li>
+<li>少量的局部变量存储空间</li>
+<li>共享进程的资源（通过指针的方式）</li>
+</ul>
+<p>线程的优点：</p>
+<ul>
+<li>花费时间比进程更少</li>
+<li>终极时间也比进程更少</li>
+<li>同一线程内的两个线程切换，花费时间更短</li>
+<li>线程共享进程的资源，它们之间的通信不会去激发操作系统内核</li>
+<li>挂起一个进程等于挂起所有的线程</li>
+</ul>
+<h4 id="线程状态与线程分类"><a href="#线程状态与线程分类" class="headerlink" title="线程状态与线程分类"></a>线程状态与线程分类</h4><p>描述：</p>
+<ul>
+<li>线程的状态：执行，就绪，阻塞</li>
+<li>也有线程转换图</li>
+</ul>
+<p>线程分类</p>
+<ul>
+<li>用户线程<ul>
+<li>在应用程序完成程序的管理</li>
+<li>内核不知道这些线程的存在</li>
+<li>描述此类线程的数据结构以及控制此类线程的原语都在核外子系统实现</li>
+</ul>
+</li>
+<li>内核线程<ul>
+<li>线程的上下文都是由操作系统内核完成</li>
+<li>调度基于内核</li>
+<li>描述此类线程的数据结构以及控制此类线程都在核心子系统中实现</li>
+</ul>
+</li>
+<li>组合线程（有用户和内核）</li>
+</ul>
+<p>线程与进程的对照关系</p>
+<ul>
+<li>1:1：单线程单进程，例如传统的UNIX</li>
+<li>M:1: 单进程对多线程，例如windows NT,Linux</li>
+<li>1:M：多进程单线程</li>
+<li>M:M: 多进程多线程</li>
+</ul>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><p>总体概述：</p>
+<ul>
+<li>调度类型</li>
+<li>调度准则</li>
+<li>调度算法</li>
+<li>实时调度</li>
+</ul>
+<h3 id="调度类型："><a href="#调度类型：" class="headerlink" title="调度类型："></a>调度类型：</h3><p>调度的目标：</p>
+<ul>
+<li>响应时间</li>
+<li>系统吞吐量</li>
+<li>处理机的效率</li>
+<li>公平性（对各类进程公平）</li>
+</ul>
+<p>调度类型：</p>
+<ul>
+<li>按os类型划分：<ul>
+<li>批处理调度，分时调度，实时调度，多处理机调度</li>
+</ul>
+</li>
+<li>按调度层次划分<ul>
+<li>长程调度：从外存把作业通过创建进程到内存去</li>
+<li>中程调度：</li>
+<li>短程调度：发生在内存之间</li>
+</ul>
+</li>
+</ul>
+<p><img src="/../img/os/diaodu.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="长度调度"><a href="#长度调度" class="headerlink" title="长度调度"></a>长度调度</h4><p>概念:又称为高级调度、作业调度，被调度作业或用户创建进程，分配必要地系统资源，并将新创建地进程插入就绪队列，等待短程调度<br>特点：</p>
+<ul>
+<li>决定哪些作业或者程序进入到内存去（取决于调度算法）</li>
+<li>选多少个进入内存，系统的负载平衡（多道程序的度，系统整个性能）</li>
+</ul>
+<p>什么时候发生？</p>
+<ul>
+<li>作业中止</li>
+<li>处理器空闲了</li>
+</ul>
+<h4 id="中程调度"><a href="#中程调度" class="headerlink" title="中程调度"></a>中程调度</h4><p>概念：又称为中级调度，他调度换出到磁盘的进程进入内存，准备执行<br>中程调度配合对换技术使用的<br>其目标是为了提高内存的利用率和系统吞吐量<br>在多道程序允许的情况下，从外存选择一个挂起状态的进程调度到内存（换入）</p>
+<h4 id="短程调度"><a href="#短程调度" class="headerlink" title="短程调度"></a>短程调度</h4><p>概念：又称低级调度，进程调度，调度内中的就绪进程执行<br>决定就绪队列中哪一个进程将获得处理机<br>调度的次数是最多的<br>什么时候发生短程调度？</p>
+<ul>
+<li>时钟中断</li>
+<li>I&#x2F;O中断</li>
+<li>操作系统调用</li>
+<li>信号</li>
+</ul>
 
                 
               </div>
@@ -379,7 +686,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计算机操作系统的学习</div>
+      <div>计算机操作系统</div>
       <div>http://example.com/2024/10/08/os/</div>
     </div>
     <div class="license-meta">
