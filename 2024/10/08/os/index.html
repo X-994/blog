@@ -33,8 +33,12 @@
 <meta property="og:image" content="http://example.com/img/os/2zhuangtaizhuan.png">
 <meta property="og:image" content="http://example.com/img/os/7zhuangtai.png">
 <meta property="og:image" content="http://example.com/img/os/diaodu.png">
+<meta property="og:image" content="http://example.com/img/os/zhouzhuan.png">
+<meta property="og:image" content="http://example.com/img/os/FCFS.png">
+<meta property="og:image" content="http://example.com/img/os/xiangyingbi.png">
+<meta property="og:image" content="http://example.com/img/os/FB.png">
 <meta property="article:published_time" content="2024-10-08T12:16:18.000Z">
-<meta property="article:modified_time" content="2024-10-10T13:26:12.392Z">
+<meta property="article:modified_time" content="2024-10-15T12:25:47.101Z">
 <meta property="article:author" content="X-994">
 <meta property="article:tag" content="四大件">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.7k 字
+          6k 字
         
       </span>
     
@@ -623,14 +627,7 @@
 <li>调度算法</li>
 <li>实时调度</li>
 </ul>
-<h3 id="调度类型："><a href="#调度类型：" class="headerlink" title="调度类型："></a>调度类型：</h3><p>调度的目标：</p>
-<ul>
-<li>响应时间</li>
-<li>系统吞吐量</li>
-<li>处理机的效率</li>
-<li>公平性（对各类进程公平）</li>
-</ul>
-<p>调度类型：</p>
+<h3 id="调度类型："><a href="#调度类型：" class="headerlink" title="调度类型："></a>调度类型：</h3><p>调度类型：</p>
 <ul>
 <li>按os类型划分：<ul>
 <li>批处理调度，分时调度，实时调度，多处理机调度</li>
@@ -662,7 +659,78 @@
 <li>操作系统调用</li>
 <li>信号</li>
 </ul>
-
+<h3 id="调度的目标："><a href="#调度的目标：" class="headerlink" title="调度的目标："></a>调度的目标：</h3><ul>
+<li>响应时间<ul>
+<li>指从用户提交请求到首次产生响应所用的时间。常用于评价分时系统的性能</li>
+</ul>
+</li>
+<li>周转时间<ul>
+<li>从指作业提交给系统开始，到作业完成为止的这段时间间隔，常用于批评批处理系统的性能</li>
+</ul>
+</li>
+<li>系统吞吐量</li>
+<li>单位时间内系统所完成的作业数</li>
+<li>用于评价批处理系统的性能</li>
+<li>处理机利用率</li>
+<li>公平性（对各类进程公平）</li>
+</ul>
+<h3 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h3><p>非剥夺方式：<br>概念：一个进程一旦被执行，一种是自己终止进程，主动释放处理器，另外一种有I&#x2F;O指令，自己主动放弃CPU的执行<br>主要用于批系统<br>优点：降低了进程的周转时间</p>
+<p>剥夺方式<br>概念：当前的执行进程可以被强制中断<br>优点：可以及时处理优先级高的进程<br>主要用于实时性要求比较高的实时系统以及性能要求比较高的批处理系统和分时系统</p>
+<p>例子：有五个进程描述如下：<br>进程    到达时刻  服务时间<br>P1       0        3<br>P2       2        6<br>P3       4        4<br>P4       6        5<br>P5       8        2</p>
+<p><img src="/../img/os/zhouzhuan.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="先来先服务算法（FCFS"><a href="#先来先服务算法（FCFS" class="headerlink" title="先来先服务算法（FCFS)"></a>先来先服务算法（FCFS)</h4><p><img src="/../img/os/FCFS.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>步骤：</li>
+<li>所有进程都进入到就绪队列里</li>
+<li>当当前进程结束后，下一个队列中最先进来的进程执行</li>
+<li>属于非剥夺方式</li>
+<li>短进程会等待非常长的时间（给进程给优先级）</li>
+<li>对于计算型进程有利，对I&#x2F;O型进程也不利（多就绪队列）</li>
+<li>实际使用<ul>
+<li>一般都是与其他调度算法混合使用 </li>
+<li>系统可以按照不同优先级维护多个就绪队列，每个队列内部执行FCFS算法调度</li>
+</ul>
+</li>
+</ul>
+<h4 id="轮转调度-RR"><a href="#轮转调度-RR" class="headerlink" title="轮转调度(RR)"></a>轮转调度(RR)</h4><p>概念：兼顾各个进程都能够得到一些服务，给所有进程一个固定长的时间片，时间到，中止进程，执行下一个进程<br>虚拟轮转调度： 改进轮转调度时，考虑对I&#x2F;O型的进程，希望他获得更快的调度，所以有两个就绪队列，由于超时被中断的回到原队列，而I&#x2F;O型进程会阻塞，去到另外一个就绪队列，这个队列优先级更高<br>时间片原则：估计系统交互式提交的任务，是在一个时间片内完成70%~80%</p>
+<h4 id="短进程优先-SJF"><a href="#短进程优先-SJF" class="headerlink" title="短进程优先(SJF)"></a>短进程优先(SJF)</h4><p>概念：优先做短进程或者是剩余时间最短者优先</p>
+<h4 id="高响应比优先-HRRN"><a href="#高响应比优先-HRRN" class="headerlink" title="高响应比优先(HRRN)"></a>高响应比优先(HRRN)</h4><p><img src="/../img/os/xiangyingbi.png" srcset="/img/loading.gif" lazyload><br>根据时间来提高优先级，对于短进程，服务时间短响应比高，对于长进程，等待时间长，相应比高<br>工程上很难实现</p>
+<h4 id="反馈调度-FB"><a href="#反馈调度-FB" class="headerlink" title="反馈调度(FB)"></a>反馈调度(FB)</h4><p><img src="/../img/os/FB.png" srcset="/img/loading.gif" lazyload><br>设置多个就绪队列，每个队列的时间片都可以相同或不同</p>
+<h3 id="实时系统与实时任务"><a href="#实时系统与实时任务" class="headerlink" title="实时系统与实时任务"></a>实时系统与实时任务</h3><p>描述：指能及时响应外部事件的请求，并在规定的时间内完成对该事件的处理，并控制所有实时任务协调一致地运行地计算机系统（系统判断这个是不是正确的，不仅要看逻辑计算结果是否正确，还要依赖产生结果的时间）<br>特点：</p>
+<ul>
+<li>切换很快</li>
+<li>实时任务小</li>
+<li>对外部响应和外部中断很快</li>
+<li>文件存储速度很快</li>
+<li>对事件或者任务地延迟有一个定数的</li>
+<li>报警和超时处理</li>
+</ul>
+<p>实时进程调度的剥夺方式<br>可以用的调度算法：</p>
+<ul>
+<li>基于时间片的轮转调度法<ul>
+<li>响应时间在秒级</li>
+<li>一般实时信息处理系统</li>
+</ul>
+</li>
+<li>基于优先级非剥夺调度方法：为实时任务赋予较高的优先级，将它插入就绪队列对手，只要执行任务在释放处理器，，则立马执行该实时任务<ul>
+<li>响应时间一般在数百毫秒至数秒范围</li>
+<li>多用于多道批处理系统，也可以用于要求不太严格的实时系统</li>
+</ul>
+</li>
+<li>基于优先级非剥夺调度方法：当实时任务到达以后，可以在时钟后中断时，剥夺正在执行的低优先级进程的执行，调度执行高优先级的任务</li>
+<li>立即剥夺调度法：要求操作系统具有快速响应外部事件的能力，一旦出现外部中断，只要当前任务未处于临界区，便立即剥夺其执行，把处理级分配给请求中断的紧迫任务</li>
+</ul>
+<h3 id="实时调度算法"><a href="#实时调度算法" class="headerlink" title="实时调度算法"></a>实时调度算法</h3><ul>
+<li>静态表驱动调度算法</li>
+<li>用于调度周期性实时任务</li>
+<li>按照任务周期到底时间，执行时间，完成截止时间以及任务优先级，制订调度表，调度实时任务</li>
+<li>最早截止时间优先调度法</li>
+<li>静态优先级调度算法：对任务的限定时间赋予优先级</li>
+<li>动态计划调度法：系统为新的任务和正在执行的任务动态创造一张表</li>
+<li>动态最大努力调度法：任务到达时，系统根据属性赋予优先级，优先级高的先调度</li>
+</ul>
+<h2 id="进程并发"><a href="#进程并发" class="headerlink" title="进程并发"></a>进程并发</h2><p>临界资源：只能互斥使用的资源，例如打印机<br>临界区：访问临界资源的那段代码</p>
+<h3 id="硬件方式实现互斥"><a href="#硬件方式实现互斥" class="headerlink" title="硬件方式实现互斥"></a>硬件方式实现互斥</h3>
                 
               </div>
             
@@ -730,6 +798,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/10/15/os-b/" title="计算机操作系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机操作系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
