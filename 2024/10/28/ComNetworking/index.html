@@ -185,8 +185,21 @@
 <meta property="og:image" content="http://example.com/img/ComNetworking/157.png">
 <meta property="og:image" content="http://example.com/img/ComNetworking/158.png">
 <meta property="og:image" content="http://example.com/img/ComNetworking/159.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/160.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/161.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/162.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/163.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/164.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/165.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/166.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/167.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/168.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/169.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/170.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/171.png">
+<meta property="og:image" content="http://example.com/img/ComNetworking/172.png">
 <meta property="article:published_time" content="2024-10-28T10:41:36.000Z">
-<meta property="article:modified_time" content="2024-11-10T07:44:32.729Z">
+<meta property="article:modified_time" content="2024-11-10T09:15:48.237Z">
 <meta property="article:author" content="X-994">
 <meta property="article:tag" content="网络编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -389,7 +402,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          20k 字
         
       </span>
     
@@ -2031,10 +2044,198 @@
 </ol>
 </li>
 </ul>
-<h4 id="拥塞控制和流量控制的区别"><a href="#拥塞控制和流量控制的区别" class="headerlink" title="拥塞控制和流量控制的区别"></a>拥塞控制和流量控制的区别</h4><p><img src="/../img/ComNetworking/159.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="拥塞控制和流量控制的区别"><a href="#拥塞控制和流量控制的区别" class="headerlink" title="拥塞控制和流量控制的区别"></a>拥塞控制和流量控制的区别</h3><p><img src="/../img/ComNetworking/159.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>发送窗口的上限值<br>发送窗口的上限值&#x3D;Min[rwnd,cwnd]<br>当</p>
+<p>发送窗口的上限值<br>发送窗口的上限值&#x3D;Min[rwnd,cwnd]<br>当rwnd &lt; cwnd时，是接受方的<strong>接受能力**限制发送窗口的最大值<br>当rwnd &gt; cwnd时，是</strong>网络拥塞**限制发送窗口的最大值</p>
 </blockquote>
+<h2 id="TCP运输连接管理"><a href="#TCP运输连接管理" class="headerlink" title="TCP运输连接管理"></a>TCP运输连接管理</h2><h3 id="运输连接的三个阶段"><a href="#运输连接的三个阶段" class="headerlink" title="运输连接的三个阶段"></a>运输连接的三个阶段</h3><ul>
+<li>TCP是面向连接的协议</li>
+<li>TCP连接有<strong>三个阶段</strong><br>连接建立-&gt;数据传送-&gt;连接释放</li>
+<li>TCP的连接管理就是使TCP连接的建立和释放都能正常地进行</li>
+</ul>
+<h3 id="TCP的连接建立-三次握手"><a href="#TCP的连接建立-三次握手" class="headerlink" title="TCP的连接建立(三次握手)"></a>TCP的连接建立(三次握手)</h3><ul>
+<li>要解决三个问题<ol>
+<li>要使每一方都能够确定对方的存在</li>
+<li>要允许双方协商一些参数(如最大窗口值，是否使用窗口扩大选项和时间戳选项以及服务质量等)</li>
+<li>能够对运输实体资源(缓存大小，连接表中的项目)进行<strong>分配</strong></li>
+</ol>
+</li>
+<li>TCP连接的建立采用<strong>客户服务器</strong>方式<ul>
+<li><strong>主动发起</strong>连接的应用进程叫做客户</li>
+<li><strong>被动等待</strong>连接建立的应用进程叫做服务器</li>
+</ul>
+</li>
+<li>TCP建立连接的过程叫做握手<ul>
+<li>采用三报文握手：在客户和服务器之间交换三个TCP报文段，以防止已失效的连接请求报文段突然又传送到了，因此产生TCP连接建立错误<br><img src="/../img/ComNetworking/160.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+</ul>
+<h3 id="TCP的连接释放-四次挥手"><a href="#TCP的连接释放-四次挥手" class="headerlink" title="TCP的连接释放(四次挥手)"></a>TCP的连接释放(四次挥手)</h3><ul>
+<li>TCP的连接释放过程比较复杂</li>
+<li>数据传输结束后，通信的<strong>双方</strong>都可以释放连接</li>
+<li>TCP连接释放的过程是<strong>四报文段握手</strong><br><img src="/../img/ComNetworking/161.png" srcset="/img/loading.gif" lazyload></li>
+<li>时间等待计时器<br><img src="/../img/ComNetworking/162.png" srcset="/img/loading.gif" lazyload></li>
+<li>保活计时器<br><img src="/../img/ComNetworking/163.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<blockquote>
+<p>TCP四个计时器</p>
+<ul>
+<li>超时重传计时器</li>
+<li>持续计时器(0窗口报文探测计时器)</li>
+<li>时间等待计时器(2MSL关闭连接)</li>
+<li>保活计时器</li>
+</ul>
+</blockquote>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><h2 id="域名系统DNS"><a href="#域名系统DNS" class="headerlink" title="域名系统DNS"></a>域名系统DNS</h2><h3 id="概叙-5"><a href="#概叙-5" class="headerlink" title="概叙"></a>概叙</h3><ul>
+<li>许多应用层软件经常直接使用<strong>域名系统</strong>DNS，但计算机的用户只是间接而不是直接使用域名系统</li>
+<li>互联网采用层次结构的命名树作为主机的名字，并使用<strong>分布式</strong>的域名系统DNS</li>
+<li>名字到IP地址的解析是有若干个域名服务器程序完成的。域名服务器在专设的结点上运行，运行该程序的机器称为<strong>域名服务器</strong></li>
+</ul>
+<h3 id="互联网的域名结构"><a href="#互联网的域名结构" class="headerlink" title="互联网的域名结构"></a>互联网的域名结构</h3><ul>
+<li>互联网采用了层次树状结构的命名方法</li>
+<li>任何一个连接在互联网上的主机或路由器，都有一个<strong>唯一</strong>的层次结构的名字，即<strong>域名</strong></li>
+<li>域名对的地址结构有标号序列组成，各标号之间用<strong>点</strong>隔开<br>  ….三级域名.二级域名.顶级域名</li>
+<li>各标号分别代表级别的域名</li>
+<li>域名只是个<strong>逻辑</strong>概念</li>
+</ul>
+<h3 id="域名服务器"><a href="#域名服务器" class="headerlink" title="域名服务器"></a>域名服务器</h3><ul>
+<li>一个服务器所负责管辖的范围叫做<strong>区</strong></li>
+<li>各单位根据具体情况来划分自己管辖范围的区，但在一个区中的所有节点必须是能够连通的</li>
+<li>每一区设置相应的<strong>权限域名服务器</strong>，用来保存该区中的所有主机的域名IP地址的映射</li>
+</ul>
+<p>DNS域名服务器四种类型 </p>
+<ul>
+<li>根域名服务器：知道所有顶级域名服务器的IP地址<ul>
+<li><strong>根域名服务器共有13套装置，不是13个机器</strong></li>
+</ul>
+</li>
+<li>顶级域名服务器：管理该顶级域名服务器注册的所有二级域名<ul>
+<li>负责管理在该顶级域名服务器注册的所有二级域名</li>
+</ul>
+</li>
+<li>权限域名服务器：负责一个区的域名服务器</li>
+<li>本地域名服务器：当一个主机发出DNS查询请求时，这个查询请求报文就发给本地域名服务器</li>
+</ul>
+<p>工作过程：</p>
+<ol>
+<li>主机访问网站，先向DNS服务器发送DNS查询请求</li>
+<li>如果访问的网站域名后缀跟请求的DNS服务器解析的域名不同，则向根域名服务器请求让根域名服务器找寻对应的DNS服务器并把解析结果返回(例如DNS为.com的域名服务器，主机访问.cn的网站，因此.com会向根域名服务器请求)</li>
+<li>将解析后的IP地址返回给主机，主机或域名服务器进行缓存</li>
+<li>主机访问IP地址来访问方网站</li>
+</ol>
+<p>域名解析过程：</p>
+<ol>
+<li>递归查询：靠别人，也就是该DNS服务器没有该结果，就向其他DNS服务器请求，例如向根域名服务器，如果根域名服务器也没有则根域名服务器向顶级域名服务器请求</li>
+<li>迭代查询：靠自己，如果本地域名服务器查询不到，然后本地域名服务器就向根域名服务器发送请求，如果还没有，则由本地域名服务器向其他服务器发送请求。</li>
+<li>高速缓存：为了提高查询效率，则添加了高速缓存，也就是查询过一次，则域名服务器将该查询结果进行缓存，这样就减少请求次数，需要定期更新(增加时间减少网络开销，减少时间提高域名转换的准确性)</li>
+</ol>
+<h2 id="DHCP动态主机配置"><a href="#DHCP动态主机配置" class="headerlink" title="DHCP动态主机配置"></a>DHCP动态主机配置</h2><p>概念：</p>
+<ul>
+<li>动态主机配置协议DHCP是应用层协议，使用客户&#x2F;服务器方式，客户端和服务端通过广播方式进行交互，基于UDP。</li>
+<li>DHCP提供即插即用联网的机制，主机可以从服务器动态获取IP地址、子网掩码、默认网关、DNS服务器名称与IP地址</li>
+<li>支持移动用户加入网络，支持在用地址续租</li>
+</ul>
+<p>请求过程：</p>
+<ul>
+<li>主机广播发送DHCP发送报文，找到网络中的DHCP服务器，服务器获得一个IP地址</li>
+<li>DHCP服务器广播发送DHCP提供报文，服务器拟分配给主机一个IP地址及相关配置，先到先得</li>
+<li>主机广播发送DHCP请求报文，主机向服务器请求提供IP地址</li>
+<li>DHCP服务器广播发送DHCP确认报文，正式将IP地址分配给主机</li>
+</ul>
+<h2 id="文件传输协议FTP"><a href="#文件传输协议FTP" class="headerlink" title="文件传输协议FTP"></a>文件传输协议FTP</h2><p>概念：</p>
+<ul>
+<li>FTP协议提供不同种类主机系统(硬、软件体系等都可以不同)之间的文件传输能力</li>
+<li>FTP是基于客户&#x2F;服务器(C&#x2F;S)的协议，基于TCP进行传输的</li>
+<li>用户通过一个客户机程序连接至远程计算机上运行的服务器程序</li>
+<li>依照FTP协议提供服务，进行文件传送的计算机就是FTP服务器</li>
+<li>连接FTP服务器，遵循FTP协议与服务器传送文件的电脑就是FTP客户端</li>
+</ul>
+<p>FTP使用两个TCP连接：<br><img src="/../img/ComNetworking/164.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>TCP控制连接：传送文件操作命令(删除、下载、上传等)，使用服务器21端口，连接始终保持</li>
+<li>TCP数据连接：用来传输数据的(下载、上传等)，连接保持一会，有两种模式<blockquote>
+<p>主动模式：服务端从20端口主动向客户端发起连接。如果服务器有防火墙需要打开21和20端口<br>被动模式：**服务端在指定范围内的某个端口被动等待客户端发起连接(端口&gt;1024)**。如果服务器有防火墙只打开21和20端口，FTP不能下载和上传数据</p>
+</blockquote>
+</li>
+</ul>
+<p>FTP传输模式：</p>
+<ul>
+<li>文本模式：ASCII模式，以文本序列传输数据</li>
+<li>二进制模式：Binary模式，以二进制序列传输数据</li>
+</ul>
+<h2 id="远程终端协议TELNET"><a href="#远程终端协议TELNET" class="headerlink" title="远程终端协议TELNET"></a>远程终端协议TELNET</h2><p>概念：</p>
+<ul>
+<li>telnet是基于TCP的远程终端协议，默认端口为23</li>
+<li>用户用TELNET就可在其所在地通过TCP连接注册(即登录)到远地的另一台主机上(使用主机名或IP地址)</li>
+<li>基于客户服务器方式的协议，传输的格式使用NVT</li>
+</ul>
+<h2 id="超文本传输协议HTTP"><a href="#超文本传输协议HTTP" class="headerlink" title="超文本传输协议HTTP"></a>超文本传输协议HTTP</h2><p>概念：</p>
+<ul>
+<li><p>HTTP协议定义了浏览器(万维网客户进程)怎样向万维网服务器请求万维网文档，以及服务器怎样把文档传送给浏览器<br>具体过程：<br><img src="/../img/ComNetworking/165.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>浏览器分析URL</li>
+<li>浏览器向DNS请求解析IP地址</li>
+<li>DNS解析出IP地址</li>
+<li>浏览器与服务器建立TCP连接</li>
+<li>浏览器发出取文件命令</li>
+<li>服务器响应</li>
+<li>释放TCP连接</li>
+<li>浏览器显示</li>
+</ol>
+</li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>http 1.0是无状态的，http 1.1是持续连接的</li>
+<li>HTTP采用TCP作为传输层协议，但HTTP协议本身是无连接的(通信双方在交换HTTP报文之前不需要先建立HTTP连接)</li>
+</ul>
+<p>HTTP的连接方式：</p>
+<ol>
+<li>非持久连接<br><img src="/../img/ComNetworking/166.png" srcset="/img/loading.gif" lazyload></li>
+<li>持久连接<blockquote>
+<p>两种工作方式：<br>非流水线方式：收到响应后再发出请求<br>流水线方式：连续发送，只花费RTT时间</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="/../img/ComNetworking/167.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>HTTP报文结构：</strong></p>
+<ul>
+<li>HTTP报文是面向文本的，因此在报文中的每一个字段都是一些ASCII码串</li>
+</ul>
+<ol>
+<li>请求报文<br><img src="/../img/ComNetworking/168.png" srcset="/img/loading.gif" lazyload></li>
+<li>响应报文<br><img src="/../img/ComNetworking/169.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><p><strong>电子邮件系统组成结构：</strong><br><img src="/../img/ComNetworking/170.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>用户代理就是用户与电子邮件系统的接口，是电子邮件客户端软件。<br>简单邮件传送协议SMTP：</li>
+<li>SMTP规定了在两个相互通信的SMTP进程之间应如何交换信息</li>
+<li>负责发送邮件的SMTP进程就是SMTP客户，负责接收邮件的进程就是SMTP服务器</li>
+<li>SMTP规定了14条命令(几个字母)和21种应答信息(三位数字代码+简单文字说明)</li>
+<li>SMTP协议是基于TCP连接以及C&#x2F;S方式的协议，端口号为25<br><img src="/../img/ComNetworking/171.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>SMTP缺点：</p>
+<ol>
+<li>SMTP不能传送可执行文件或者其他二进制对象</li>
+<li>SMTP仅限于传送7位ASCII码，不能传送其他非英语国家的文字</li>
+<li>SMTP服务器会拒绝超过一定长度的邮件</li>
+</ol>
+<p>MIME：</p>
+<ul>
+<li>可以将邮件传送的附件类型码放进SMTP协议数据报中</li>
+<li>使得接收用户浏览器知道用什么插件解析<br><img src="/../img/ComNetworking/172.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>邮局协议POP3：</p>
+<ul>
+<li>基于TCP连接和C&#x2F;S方式的协议，端口号110</li>
+<li>用于接收邮件的协议</li>
+<li>工作方式：1.下载并保存(在服务器)，2.下载并删除</li>
+</ul>
+<p>网际报文存取协议IMAP：</p>
+<ul>
+<li>当用户PC上的IMAP客户程序打开IMAP服务器的邮箱时，用户可以看到邮箱的首部，若用户需要打开某个邮件，该邮件才上传到用户的计算机上</li>
+<li>IMAP可以让用户在不同的地方使用不同的计算机随时上网阅读处理邮件，还允许只读邮件中的某一个部分(先看正文，有wifi的时候再下载附件)</li>
+</ul>
 
                 
               </div>
